@@ -22,7 +22,6 @@ void MainWindow::paintEvent(QPaintEvent *) {
         }
     }
     delete painter;
-    ui->canvas->addPixMap(paintedFrame[currentFrameIndex]);
     ui->canvas = paintedFrames[currentFrameIndex];
 }
 
