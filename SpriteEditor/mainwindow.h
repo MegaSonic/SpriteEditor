@@ -5,6 +5,8 @@
 #include <QPainter>
 #include <QColor>
 #include <vector>
+#include <QMouseEvent>
+#include <QDebug>
 
 namespace Ui {
 class MainWindow;
@@ -17,18 +19,27 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void mouseMoveEvent(QMouseEvent* event);
 
 private slots:
+
+    void on_actionDark_triggered();
+
+    void on_actionLight_triggered();
 
 private:
     Ui::MainWindow *ui;
     QColor *currentColor;
 
+    QImage* canvasImage;
+    QPainter* canvasPainter;
+
+
     //size of square canvas
     unsigned int canvasSize;
     unsigned int currentFrameIndex;
     //holds each matrix of vectors holding pixel color data for each frame.
-    std::vector<QColor[][]> * frames;
+    // std::vector<QColor[][]> * frames;
     //hold painted frames which ui elements can reference.
     std::vector<QPixmap*> paintedFrames;
 

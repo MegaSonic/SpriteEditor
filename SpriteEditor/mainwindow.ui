@@ -32,7 +32,7 @@
     <property name="title">
      <string>GroupBox</string>
     </property>
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="eraseButton">
      <property name="geometry">
       <rect>
        <x>100</x>
@@ -42,10 +42,14 @@
       </rect>
      </property>
      <property name="text">
-      <string>PushButton</string>
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../Editing-Eraser-icon.png</normaloff>../Editing-Eraser-icon.png</iconset>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_4">
+    <widget class="QPushButton" name="eyedropButton">
      <property name="geometry">
       <rect>
        <x>100</x>
@@ -55,10 +59,14 @@
       </rect>
      </property>
      <property name="text">
-      <string>PushButton</string>
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../Eyedropper-icon.png</normaloff>../Eyedropper-icon.png</iconset>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_3">
+    <widget class="QPushButton" name="marqueeButton">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -68,10 +76,14 @@
       </rect>
      </property>
      <property name="text">
-      <string>PushButton</string>
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../cell-6-2-480.png</normaloff>../cell-6-2-480.png</iconset>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="drawButton">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -84,7 +96,11 @@
       <string notr="true"/>
      </property>
      <property name="text">
-      <string>PushButton</string>
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../1024px-Black_pencil.svg.png</normaloff>../1024px-Black_pencil.svg.png</iconset>
      </property>
     </widget>
    </widget>
@@ -184,6 +200,9 @@
      <property name="mouseTracking">
       <bool>true</bool>
      </property>
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
     </widget>
    </widget>
   </widget>
@@ -214,6 +233,8 @@
     <property name="title">
      <string>Themes</string>
     </property>
+    <addaction name="actionDark"/>
+    <addaction name="actionLight"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -238,6 +259,16 @@
   <action name="actionExit">
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionDark">
+   <property name="text">
+    <string>Dark</string>
+   </property>
+  </action>
+  <action name="actionLight">
+   <property name="text">
+    <string>Light</string>
    </property>
   </action>
  </widget>
