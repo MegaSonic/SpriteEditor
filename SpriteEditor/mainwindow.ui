@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>802</width>
+    <height>601</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -160,15 +160,31 @@
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="widget" native="true">
+   <widget class="QWidget" name="editor" native="true">
     <property name="geometry">
      <rect>
       <x>200</x>
       <y>0</y>
       <width>400</width>
-      <height>540</height>
+      <height>560</height>
      </rect>
     </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <widget class="QWidget" name="canvas" native="true">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>85</y>
+       <width>390</width>
+       <height>390</height>
+      </rect>
+     </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -176,7 +192,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>802</width>
      <height>21</height>
     </rect>
    </property>
