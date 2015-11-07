@@ -63,3 +63,5 @@ void MainWindow::on_actionLight_triggered()
     this->setPalette(pal);
 
 }
+
+// Alejandra Test Comment
