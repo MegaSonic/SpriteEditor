@@ -7,7 +7,7 @@ class Themes
 public:
     Themes();
 
-    enum { Dark = 0, Light = 1 };
+    enum ThemeColor { DARK = 0, LIGHT = 1 };
 };
 
 #endif // THEMES_H
