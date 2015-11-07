@@ -12,7 +12,10 @@ MainWindow::MainWindow(QWidget *parent) :
     canvasImage = new QImage();
     canvasImage->size().setHeight(800);
     canvasImage->size().setWidth(600);
-    canvasPainter = new QPainter();
+    canvasPainter = new QPainter();   
+    colorSelector = new QColorDialog(parent);
+    colorSelector->setVisible(true);
+
 
 }
 
@@ -64,4 +67,5 @@ void MainWindow::on_actionLight_triggered()
 
 }
 
-// Alejandra Test Comment
+
+

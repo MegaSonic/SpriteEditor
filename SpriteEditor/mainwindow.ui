@@ -103,42 +103,39 @@
        <normaloff>:/qml/1024px-Black_pencil.svg.png</normaloff>:/qml/1024px-Black_pencil.svg.png</iconset>
      </property>
     </widget>
-   </widget>
-   <widget class="QScrollArea" name="scrollArea">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>100</y>
-      <width>200</width>
-      <height>240</height>
-     </rect>
-    </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents">
+    <widget class="QWidget" name="horizontalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>90</y>
+       <width>160</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout"/>
+    </widget>
+    <widget class="QWidget" name="canvas" native="true">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>198</width>
-       <height>238</height>
+       <width>390</width>
+       <height>390</height>
       </rect>
      </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
+     </property>
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
     </widget>
-   </widget>
-   <widget class="QGroupBox" name="groupBox_2">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>340</y>
-      <width>200</width>
-      <height>220</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>GroupBox</string>
-    </property>
+    <zorder>canvas</zorder>
+    <zorder>eraseButton</zorder>
+    <zorder>eyedropButton</zorder>
+    <zorder>marqueeButton</zorder>
+    <zorder>drawButton</zorder>
+    <zorder>horizontalLayoutWidget</zorder>
    </widget>
    <widget class="QGroupBox" name="groupBox_3">
     <property name="geometry">
@@ -177,31 +174,55 @@
     </widget>
    </widget>
    <widget class="QWidget" name="editor" native="true">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>200</x>
       <y>0</y>
-      <width>400</width>
+      <width>167</width>
       <height>560</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>167</width>
+      <height>16770</height>
+     </size>
     </property>
     <property name="mouseTracking">
      <bool>false</bool>
     </property>
-    <widget class="QWidget" name="canvas" native="true">
+    <zorder>scrollArea</zorder>
+    <zorder>horizontalLayoutWidget</zorder>
+   </widget>
+   <widget class="QScrollArea" name="scrollArea">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>100</y>
+      <width>200</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents">
      <property name="geometry">
       <rect>
-       <x>5</x>
-       <y>85</y>
-       <width>390</width>
-       <height>390</height>
+       <x>0</x>
+       <y>0</y>
+       <width>198</width>
+       <height>149</height>
       </rect>
-     </property>
-     <property name="mouseTracking">
-      <bool>true</bool>
-     </property>
-     <property name="autoFillBackground">
-      <bool>true</bool>
      </property>
     </widget>
    </widget>
@@ -212,7 +233,7 @@
      <x>0</x>
      <y>0</y>
      <width>802</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

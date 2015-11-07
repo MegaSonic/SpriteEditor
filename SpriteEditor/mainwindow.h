@@ -7,6 +7,7 @@
 #include <vector>
 #include <QMouseEvent>
 #include <QDebug>
+#include <QColorDialog>
 
 namespace Ui {
 class MainWindow;
@@ -33,6 +34,7 @@ private:
 
     QImage* canvasImage;
     QPainter* canvasPainter;
+    QColorDialog* colorSelector;
 
 
     //size of square canvas
