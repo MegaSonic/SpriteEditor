@@ -14,13 +14,16 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    qcolormatrix.cpp
+    qcolormatrix.cpp \
+    themes.cpp
 
 HEADERS  += mainwindow.h \
-    qcolormatrix.h
+    qcolormatrix.h \
+    themes.h
 
 FORMS    += mainwindow.ui
 
 DISTFILES +=
 
-RESOURCES +=
+RESOURCES += \
+    resources.qrc

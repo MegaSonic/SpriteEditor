@@ -45,8 +45,8 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>../Editing-Eraser-icon.png</normaloff>../Editing-Eraser-icon.png</iconset>
+      <iconset resource="resources.qrc">
+       <normaloff>:/qml/Editing-Eraser-icon.png</normaloff>:/qml/Editing-Eraser-icon.png</iconset>
      </property>
     </widget>
     <widget class="QPushButton" name="eyedropButton">
@@ -62,8 +62,8 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>../Eyedropper-icon.png</normaloff>../Eyedropper-icon.png</iconset>
+      <iconset resource="resources.qrc">
+       <normaloff>:/qml/Eyedropper-icon.png</normaloff>:/qml/Eyedropper-icon.png</iconset>
      </property>
     </widget>
     <widget class="QPushButton" name="marqueeButton">
@@ -79,8 +79,8 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>../cell-6-2-480.png</normaloff>../cell-6-2-480.png</iconset>
+      <iconset resource="resources.qrc">
+       <normaloff>:/qml/cell-6-2-480.png</normaloff>:/qml/cell-6-2-480.png</iconset>
      </property>
     </widget>
     <widget class="QPushButton" name="drawButton">
@@ -99,8 +99,8 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>../1024px-Black_pencil.svg.png</normaloff>../1024px-Black_pencil.svg.png</iconset>
+      <iconset resource="resources.qrc">
+       <normaloff>:/qml/1024px-Black_pencil.svg.png</normaloff>:/qml/1024px-Black_pencil.svg.png</iconset>
      </property>
     </widget>
    </widget>
@@ -273,6 +273,8 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
