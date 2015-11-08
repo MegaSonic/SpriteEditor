@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>802</width>
-    <height>601</height>
+    <width>640</width>
+    <height>480</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>640</width>
-    <height>480</height>
+    <width>320</width>
+    <height>240</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -181,12 +181,12 @@
      <rect>
       <x>200</x>
       <y>0</y>
-      <width>167</width>
-      <height>560</height>
+      <width>100</width>
+      <height>559</height>
      </rect>
     </property>
     <property name="sizePolicy">
-     <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
       <horstretch>0</horstretch>
       <verstretch>0</verstretch>
      </sizepolicy>
@@ -200,8 +200,6 @@
     <property name="mouseTracking">
      <bool>false</bool>
     </property>
-    <zorder>scrollArea</zorder>
-    <zorder>horizontalLayoutWidget</zorder>
    </widget>
    <widget class="QScrollArea" name="scrollArea">
     <property name="geometry">
@@ -209,7 +207,7 @@
       <x>0</x>
       <y>100</y>
       <width>200</width>
-      <height>151</height>
+      <height>81</height>
      </rect>
     </property>
     <property name="widgetResizable">
@@ -221,18 +219,56 @@
        <x>0</x>
        <y>0</y>
        <width>198</width>
-       <height>149</height>
+       <height>79</height>
       </rect>
      </property>
     </widget>
    </widget>
+   <widget class="QDockWidget" name="dockWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>180</y>
+      <width>200</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>62</width>
+      <height>201</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>200</width>
+      <height>261</height>
+     </size>
+    </property>
+    <property name="allowedAreas">
+     <set>Qt::BottomDockWidgetArea|Qt::LeftDockWidgetArea</set>
+    </property>
+    <widget class="QWidget" name="dockWidgetContents_4"/>
+   </widget>
+   <zorder>scrollArea</zorder>
+   <zorder>groupBox</zorder>
+   <zorder>groupBox_3</zorder>
+   <zorder>scrollArea_2</zorder>
+   <zorder>editor</zorder>
+   <zorder>dockWidget_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>802</width>
+     <width>640</width>
      <height>22</height>
     </rect>
    </property>

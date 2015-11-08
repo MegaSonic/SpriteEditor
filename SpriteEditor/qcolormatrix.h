@@ -7,7 +7,7 @@
 class QColorMatrix
 {
 private:
-    std::vector<std::vector<QColor>> colorMatrix;
+    std::vector< std::vector<QColor> > colorMatrix;
 
 public:
     QColorMatrix();

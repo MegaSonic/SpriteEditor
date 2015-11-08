@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QFlags>
 
 
 
@@ -12,9 +13,20 @@ MainWindow::MainWindow(QWidget *parent) :
     canvasImage = new QImage();
     canvasImage->size().setHeight(800);
     canvasImage->size().setWidth(600);
-    canvasPainter = new QPainter();   
+    canvasPainter = new QPainter();
+
+    // Set up the color selector
     colorSelector = new QColorDialog(parent);
+    colorSelector->setOption(QColorDialog::ShowAlphaChannel);
+    colorSelector->setOption(QColorDialog::NoButtons);
+    colorSelector->setOption(QColorDialog::DontUseNativeDialog);
+
+    // Dock widget is used to place the color selector on the main window
+    ui->dockWidget_2->setWidget(colorSelector);
+    ui->dockWidget_2->setFloating(false);
+    colorSelector->resize(12, 6);
     colorSelector->setVisible(true);
+
 
 
 }
@@ -69,3 +81,8 @@ void MainWindow::on_actionLight_triggered()
 
 
 
+
+void MainWindow::on_dockWidget_2_visibilityChanged(bool visible)
+{
+
+}

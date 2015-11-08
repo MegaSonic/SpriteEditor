@@ -28,6 +28,8 @@ private slots:
 
     void on_actionLight_triggered();
 
+    void on_dockWidget_2_visibilityChanged(bool visible);
+
 private:
     Ui::MainWindow *ui;
     QColor *currentColor;
