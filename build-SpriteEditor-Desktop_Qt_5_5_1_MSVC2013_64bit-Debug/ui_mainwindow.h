@@ -13,7 +13,9 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QDockWidget>
 #include <QtWidgets/QGroupBox>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
@@ -40,14 +42,17 @@ public:
     QPushButton *eyedropButton;
     QPushButton *marqueeButton;
     QPushButton *drawButton;
-    QScrollArea *scrollArea;
-    QWidget *scrollAreaWidgetContents;
-    QGroupBox *groupBox_2;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout;
+    QWidget *canvas;
     QGroupBox *groupBox_3;
     QScrollArea *scrollArea_2;
     QWidget *scrollAreaWidgetContents_2;
     QWidget *editor;
-    QWidget *canvas;
+    QScrollArea *scrollArea;
+    QWidget *scrollAreaWidgetContents;
+    QDockWidget *dockWidget_2;
+    QWidget *dockWidgetContents_4;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuEdit;
@@ -58,8 +63,51 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(802, 601);
-        MainWindow->setMinimumSize(QSize(640, 480));
+        MainWindow->resize(810, 480);
+        MainWindow->setMinimumSize(QSize(320, 240));
+        MainWindow->setStyleSheet(QLatin1String("* {\n"
+"background-color: rgb(48, 48, 48);\n"
+"color: white;\n"
+"}\n"
+"\n"
+"QMenu {\n"
+"background-color: rgb(48, 48, 48);\n"
+"color: white;\n"
+"border-color: rgb(48, 48, 48);\n"
+"background: rgb(48, 48, 48);\n"
+"}\n"
+"\n"
+"QMenuBar {\n"
+"background-color: transparent;\n"
+"}\n"
+"\n"
+"QMenuBar::item {\n"
+"color : white;\n"
+"margin-top:4px;\n"
+"spacing: 3px;\n"
+"padding: 1px 10px;\n"
+"background: transparent;\n"
+"border-radius: 4px;\n"
+"}\n"
+"\n"
+"QPushButton {\n"
+"color: white;\n"
+"background-color: qlineargradient(spread:pad, x1:0.478, y1:1, x2:0.494, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"border-width: 1px;\n"
+"border-color: #339;\n"
+"border-style: solid;\n"
+"padding: 15px;\n"
+"padding-left: 10px;\n"
+"padding-right: 10px;\n"
+"min-width: 50px;\n"
+"max-width: 50px;\n"
+"min-height: 13px;\n"
+"max-height: 13px;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+""));
         actionNew = new QAction(MainWindow);
         actionNew->setObjectName(QStringLiteral("actionNew"));
         actionSave = new QAction(MainWindow);
@@ -79,40 +127,48 @@ public:
         groupBox->setGeometry(QRect(0, 0, 200, 100));
         eraseButton = new QPushButton(groupBox);
         eraseButton->setObjectName(QStringLiteral("eraseButton"));
-        eraseButton->setGeometry(QRect(100, 0, 100, 50));
+        eraseButton->setGeometry(QRect(100, 0, 72, 45));
         QIcon icon;
-        icon.addFile(QStringLiteral("../Editing-Eraser-icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QStringLiteral(":/qml/Editing-Eraser-icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         eraseButton->setIcon(icon);
         eyedropButton = new QPushButton(groupBox);
         eyedropButton->setObjectName(QStringLiteral("eyedropButton"));
-        eyedropButton->setGeometry(QRect(100, 50, 100, 50));
+        eyedropButton->setGeometry(QRect(100, 50, 72, 45));
         QIcon icon1;
-        icon1.addFile(QStringLiteral("../Eyedropper-icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon1.addFile(QStringLiteral(":/qml/Eyedropper-icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         eyedropButton->setIcon(icon1);
         marqueeButton = new QPushButton(groupBox);
         marqueeButton->setObjectName(QStringLiteral("marqueeButton"));
-        marqueeButton->setGeometry(QRect(0, 50, 100, 50));
+        marqueeButton->setGeometry(QRect(0, 50, 72, 45));
         QIcon icon2;
-        icon2.addFile(QStringLiteral("../cell-6-2-480.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon2.addFile(QStringLiteral(":/qml/cell-6-2-480.png"), QSize(), QIcon::Normal, QIcon::Off);
         marqueeButton->setIcon(icon2);
         drawButton = new QPushButton(groupBox);
         drawButton->setObjectName(QStringLiteral("drawButton"));
-        drawButton->setGeometry(QRect(0, 0, 100, 50));
+        drawButton->setGeometry(QRect(0, 0, 72, 45));
         drawButton->setStyleSheet(QStringLiteral(""));
         QIcon icon3;
-        icon3.addFile(QStringLiteral("../1024px-Black_pencil.svg.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon3.addFile(QStringLiteral(":/qml/1024px-Black_pencil.svg.png"), QSize(), QIcon::Normal, QIcon::Off);
         drawButton->setIcon(icon3);
-        scrollArea = new QScrollArea(centralWidget);
-        scrollArea->setObjectName(QStringLiteral("scrollArea"));
-        scrollArea->setGeometry(QRect(0, 100, 200, 240));
-        scrollArea->setWidgetResizable(true);
-        scrollAreaWidgetContents = new QWidget();
-        scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 198, 238));
-        scrollArea->setWidget(scrollAreaWidgetContents);
-        groupBox_2 = new QGroupBox(centralWidget);
-        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        groupBox_2->setGeometry(QRect(0, 340, 200, 220));
+        horizontalLayoutWidget = new QWidget(groupBox);
+        horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
+        horizontalLayoutWidget->setGeometry(QRect(160, 90, 160, 80));
+        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        canvas = new QWidget(groupBox);
+        canvas->setObjectName(QStringLiteral("canvas"));
+        canvas->setGeometry(QRect(0, 0, 390, 390));
+        canvas->setMouseTracking(true);
+        canvas->setAutoFillBackground(false);
+        canvas->raise();
+        eraseButton->raise();
+        eyedropButton->raise();
+        marqueeButton->raise();
+        drawButton->raise();
+        horizontalLayoutWidget->raise();
         groupBox_3 = new QGroupBox(centralWidget);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
         groupBox_3->setGeometry(QRect(600, 0, 200, 220));
@@ -126,17 +182,47 @@ public:
         scrollArea_2->setWidget(scrollAreaWidgetContents_2);
         editor = new QWidget(centralWidget);
         editor->setObjectName(QStringLiteral("editor"));
-        editor->setGeometry(QRect(200, 0, 400, 560));
+        editor->setEnabled(true);
+        editor->setGeometry(QRect(200, 0, 100, 559));
+        QSizePolicy sizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(editor->sizePolicy().hasHeightForWidth());
+        editor->setSizePolicy(sizePolicy);
+        editor->setMaximumSize(QSize(167, 16770));
         editor->setMouseTracking(false);
-        canvas = new QWidget(editor);
-        canvas->setObjectName(QStringLiteral("canvas"));
-        canvas->setGeometry(QRect(5, 85, 390, 390));
-        canvas->setMouseTracking(true);
-        canvas->setAutoFillBackground(true);
+        scrollArea = new QScrollArea(centralWidget);
+        scrollArea->setObjectName(QStringLiteral("scrollArea"));
+        scrollArea->setGeometry(QRect(0, 100, 200, 81));
+        scrollArea->setWidgetResizable(true);
+        scrollAreaWidgetContents = new QWidget();
+        scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 198, 79));
+        scrollArea->setWidget(scrollAreaWidgetContents);
+        dockWidget_2 = new QDockWidget(centralWidget);
+        dockWidget_2->setObjectName(QStringLiteral("dockWidget_2"));
+        dockWidget_2->setGeometry(QRect(0, 180, 200, 261));
+        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(dockWidget_2->sizePolicy().hasHeightForWidth());
+        dockWidget_2->setSizePolicy(sizePolicy1);
+        dockWidget_2->setMinimumSize(QSize(80, 201));
+        dockWidget_2->setMaximumSize(QSize(200, 261));
+        dockWidget_2->setAllowedAreas(Qt::BottomDockWidgetArea|Qt::LeftDockWidgetArea);
+        dockWidgetContents_4 = new QWidget();
+        dockWidgetContents_4->setObjectName(QStringLiteral("dockWidgetContents_4"));
+        dockWidget_2->setWidget(dockWidgetContents_4);
         MainWindow->setCentralWidget(centralWidget);
+        scrollArea->raise();
+        groupBox->raise();
+        groupBox_3->raise();
+        scrollArea_2->raise();
+        editor->raise();
+        dockWidget_2->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 802, 21));
+        menuBar->setGeometry(QRect(0, 0, 810, 22));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menuEdit = new QMenu(menuBar);
@@ -177,7 +263,6 @@ public:
         eyedropButton->setText(QString());
         marqueeButton->setText(QString());
         drawButton->setText(QString());
-        groupBox_2->setTitle(QApplication::translate("MainWindow", "GroupBox", 0));
         groupBox_3->setTitle(QApplication::translate("MainWindow", "GroupBox", 0));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0));
         menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", 0));

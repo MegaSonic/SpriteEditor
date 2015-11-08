@@ -30,12 +30,9 @@ MainWindow::MainWindow(QWidget *parent) :
     colorSelector->resize(12, 6);
     colorSelector->setVisible(true);
 
-<<<<<<< HEAD
 
-
-=======
     themes = new Themes();
->>>>>>> 318bad91024a2c069b87914fa126ff0f79a06492
+
 }
 
 /*

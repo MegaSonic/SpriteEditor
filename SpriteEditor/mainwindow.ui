@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
+    <width>810</width>
     <height>480</height>
    </rect>
   </property>
@@ -18,6 +18,51 @@
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">* {
+background-color: rgb(48, 48, 48);
+color: white;
+}
+
+QMenu {
+background-color: rgb(48, 48, 48);
+color: white;
+border-color: rgb(48, 48, 48);
+background: rgb(48, 48, 48);
+}
+
+QMenuBar {
+background-color: transparent;
+}
+
+QMenuBar::item {
+color : white;
+margin-top:4px;
+spacing: 3px;
+padding: 1px 10px;
+background: transparent;
+border-radius: 4px;
+}
+
+QPushButton {
+color: white;
+background-color: qlineargradient(spread:pad, x1:0.478, y1:1, x2:0.494, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
+border-width: 1px;
+border-color: #339;
+border-style: solid;
+padding: 15px;
+padding-left: 10px;
+padding-right: 10px;
+min-width: 50px;
+max-width: 50px;
+min-height: 13px;
+max-height: 13px;
+}
+
+
+
+</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QGroupBox" name="groupBox">
@@ -37,8 +82,8 @@
       <rect>
        <x>100</x>
        <y>0</y>
-       <width>100</width>
-       <height>50</height>
+       <width>72</width>
+       <height>45</height>
       </rect>
      </property>
      <property name="text">
@@ -54,8 +99,8 @@
       <rect>
        <x>100</x>
        <y>50</y>
-       <width>100</width>
-       <height>50</height>
+       <width>72</width>
+       <height>45</height>
       </rect>
      </property>
      <property name="text">
@@ -71,8 +116,8 @@
       <rect>
        <x>0</x>
        <y>50</y>
-       <width>100</width>
-       <height>50</height>
+       <width>72</width>
+       <height>45</height>
       </rect>
      </property>
      <property name="text">
@@ -88,8 +133,8 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>100</width>
-       <height>50</height>
+       <width>72</width>
+       <height>45</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -127,7 +172,7 @@
       <bool>true</bool>
      </property>
      <property name="autoFillBackground">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
     </widget>
     <zorder>canvas</zorder>
@@ -241,7 +286,7 @@
     </property>
     <property name="minimumSize">
      <size>
-      <width>62</width>
+      <width>80</width>
       <height>201</height>
      </size>
     </property>
@@ -268,7 +313,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>640</width>
+     <width>810</width>
      <height>22</height>
     </rect>
    </property>
