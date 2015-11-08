@@ -15,6 +15,9 @@ MainWindow::MainWindow(QWidget *parent) :
     canvasImage->size().setWidth(600);
     canvasPainter = new QPainter();
 
+
+
+
     // Set up the color selector
     colorSelector = new QColorDialog(parent);
     colorSelector->setOption(QColorDialog::ShowAlphaChannel);
@@ -27,8 +30,12 @@ MainWindow::MainWindow(QWidget *parent) :
     colorSelector->resize(12, 6);
     colorSelector->setVisible(true);
 
+<<<<<<< HEAD
 
 
+=======
+    themes = new Themes();
+>>>>>>> 318bad91024a2c069b87914fa126ff0f79a06492
 }
 
 /*
@@ -53,6 +60,7 @@ MainWindow::~MainWindow() {
     delete ui;
     delete canvasImage;
     delete canvasPainter;
+    delete themes;
 }
 
 void MainWindow::mouseMoveEvent(QMouseEvent *event) {
@@ -64,19 +72,14 @@ void MainWindow::on_actionDark_triggered()
 {
     qDebug("Dark triggered");
     statusBar()->showMessage("Dark theme enabled.");
-    QPalette pal(this->palette());
-    pal.setColor(QPalette::Background, Qt::black);
-    this->setPalette(pal);
+    themes->changeTheme(Themes::DARK);
 }
 
 void MainWindow::on_actionLight_triggered()
 {
     qDebug("Light triggered");
     statusBar()->showMessage("Light theme enabled");
-    QPalette pal(this->palette());
-    pal.setColor(QPalette::Background, Qt::gray);
-    this->setPalette(pal);
-
+    themes->changeTheme(Themes::DEFAULT);
 }
 
 
