@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QFlags>
+#include <QGraphicsScene>
 
 
 
@@ -16,8 +17,6 @@ MainWindow::MainWindow(QWidget *parent) :
     canvasPainter = new QPainter();
 
 
-
-
     // Set up the color selector
     colorSelector = new QColorDialog(parent);
     colorSelector->setOption(QColorDialog::ShowAlphaChannel);
@@ -30,9 +29,9 @@ MainWindow::MainWindow(QWidget *parent) :
     colorSelector->resize(12, 6);
     colorSelector->setVisible(true);
 
-
     themes = new Themes();
 
+    p = new QPixmap(700,700);
 }
 
 /*
@@ -92,3 +91,33 @@ void MainWindow::on_actionBlue_triggered()
     statusBar()->showMessage("Blue theme enabled");
     themes->changeTheme(Themes::BLUE);
 }
+
+void MainWindow::mousePressEvent(QMouseEvent *event)
+{
+    // Calculates position for grid.
+    xPos = (event->pos().x() / 40) * 40;
+    yPos = (event->pos().y() / 40) * 40;
+
+    // Adds the point to the list of points to draw.
+    QPoint point = QPoint(xPos, yPos);
+    pointsList.push_back(point);
+
+    QPainter painter(p);
+    QRect rect = QRect(xPos, yPos, 40, 40);
+    painter.drawRect(rect);
+    painter.fillRect(rect, Qt::black);
+    repaint();
+}
+
+void MainWindow::paintEvent(QPaintEvent *event)
+{
+    QPainter painter(this);
+    painter.drawPixmap(0,0,700,700,*p);
+}
+
+
+
+
+
+
+
