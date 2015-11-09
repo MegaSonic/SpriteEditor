@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>810</width>
+    <width>733</width>
     <height>480</height>
    </rect>
   </property>
@@ -187,7 +187,6 @@ max-height: 13px;
     <zorder>marqueeButton</zorder>
     <zorder>drawButton</zorder>
     <zorder>horizontalLayoutWidget</zorder>
-    <zorder>dockWidget_2</zorder>
    </widget>
    <widget class="QGroupBox" name="groupBox_3">
     <property name="geometry">
@@ -233,7 +232,7 @@ max-height: 13px;
      <rect>
       <x>200</x>
       <y>0</y>
-      <width>100</width>
+      <width>167</width>
       <height>559</height>
      </rect>
     </property>
@@ -253,36 +252,13 @@ max-height: 13px;
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QScrollArea" name="scrollArea">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>100</y>
-      <width>200</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>198</width>
-       <height>79</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
    <widget class="QScrollArea" name="colorSelectorScroller">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>190</y>
+      <y>100</y>
       <width>201</width>
-      <height>261</height>
+      <height>351</height>
      </rect>
     </property>
     <property name="widgetResizable">
@@ -294,24 +270,41 @@ max-height: 13px;
        <x>0</x>
        <y>0</y>
        <width>199</width>
-       <height>259</height>
+       <height>349</height>
       </rect>
      </property>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>100</y>
+        <width>200</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>198</width>
+         <height>79</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
     </widget>
    </widget>
-   <zorder>scrollArea</zorder>
-   <zorder>groupBox</zorder>
-   <zorder>groupBox_3</zorder>
-   <zorder>scrollArea_2</zorder>
-   <zorder>editor</zorder>
-   <zorder>colorSelectorScroller</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>810</width>
+     <width>733</width>
      <height>22</height>
     </rect>
    </property>

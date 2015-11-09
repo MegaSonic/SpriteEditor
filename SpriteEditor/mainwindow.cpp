@@ -1,10 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QFlags>
-#include <QSize>
-#include <QRect>
-#include <QPoint>
-#include <iostream>
+#include <vector>
+
+
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -19,8 +18,6 @@ MainWindow::MainWindow(QWidget *parent) :
     canvasPainter = new QPainter();
 
 
-
-
     // Set up the color selector
     colorSelector = new QColorDialog(parent);
     colorSelector->setOption(QColorDialog::ShowAlphaChannel);
@@ -30,8 +27,12 @@ MainWindow::MainWindow(QWidget *parent) :
     colorSelector->setVisible(true);
 
 
-
     themes = new Themes();
+
+
+    // Buttons for frames
+
+
 
 }
 
@@ -81,8 +82,3 @@ void MainWindow::on_actionLight_triggered()
 
 
 
-
-void MainWindow::on_dockWidget_2_visibilityChanged(bool visible)
-{
-
-}
