@@ -76,7 +76,7 @@ void MainWindow::on_actionLight_triggered()
 {
     qDebug("Light triggered");
     statusBar()->showMessage("Light theme enabled");
-    themes->changeTheme(Themes::DEFAULT);
+    themes->changeTheme(Themes::LIGHT);
 }
 
 
@@ -85,4 +85,10 @@ void MainWindow::on_actionLight_triggered()
 void MainWindow::on_dockWidget_2_visibilityChanged(bool visible)
 {
 
+}
+
+void MainWindow::on_actionBlue_triggered()
+{
+    statusBar()->showMessage("Blue theme enabled");
+    themes->changeTheme(Themes::BLUE);
 }

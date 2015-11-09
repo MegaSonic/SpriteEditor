@@ -36,6 +36,7 @@ public:
     QAction *actionExit;
     QAction *actionDark;
     QAction *actionLight;
+    QAction *actionBlue;
     QWidget *centralWidget;
     QGroupBox *groupBox;
     QPushButton *eraseButton;
@@ -65,49 +66,7 @@ public:
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(810, 480);
         MainWindow->setMinimumSize(QSize(320, 240));
-        MainWindow->setStyleSheet(QLatin1String("* {\n"
-"background-color: rgb(48, 48, 48);\n"
-"color: white;\n"
-"}\n"
-"\n"
-"QMenu {\n"
-"background-color: rgb(48, 48, 48);\n"
-"color: white;\n"
-"border-color: rgb(48, 48, 48);\n"
-"background: rgb(48, 48, 48);\n"
-"}\n"
-"\n"
-"QMenuBar {\n"
-"background-color: transparent;\n"
-"}\n"
-"\n"
-"QMenuBar::item {\n"
-"color : white;\n"
-"margin-top:4px;\n"
-"spacing: 3px;\n"
-"padding: 1px 10px;\n"
-"background: transparent;\n"
-"border-radius: 4px;\n"
-"}\n"
-"\n"
-"QPushButton {\n"
-"color: white;\n"
-"background-color: qlineargradient(spread:pad, x1:0.478, y1:1, x2:0.494, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));\n"
-"border-width: 1px;\n"
-"border-color: #339;\n"
-"border-style: solid;\n"
-"padding: 15px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"min-width: 50px;\n"
-"max-width: 50px;\n"
-"min-height: 13px;\n"
-"max-height: 13px;\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-""));
+        MainWindow->setStyleSheet(QStringLiteral(""));
         actionNew = new QAction(MainWindow);
         actionNew->setObjectName(QStringLiteral("actionNew"));
         actionSave = new QAction(MainWindow);
@@ -120,6 +79,8 @@ public:
         actionDark->setObjectName(QStringLiteral("actionDark"));
         actionLight = new QAction(MainWindow);
         actionLight->setObjectName(QStringLiteral("actionLight"));
+        actionBlue = new QAction(MainWindow);
+        actionBlue->setObjectName(QStringLiteral("actionBlue"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         groupBox = new QGroupBox(centralWidget);
@@ -222,7 +183,7 @@ public:
         dockWidget_2->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 810, 22));
+        menuBar->setGeometry(QRect(0, 0, 810, 21));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menuEdit = new QMenu(menuBar);
@@ -243,6 +204,7 @@ public:
         menuFile->addAction(actionExit);
         menuThemes->addAction(actionDark);
         menuThemes->addAction(actionLight);
+        menuThemes->addAction(actionBlue);
 
         retranslateUi(MainWindow);
 
@@ -258,6 +220,7 @@ public:
         actionExit->setText(QApplication::translate("MainWindow", "Exit", 0));
         actionDark->setText(QApplication::translate("MainWindow", "Dark", 0));
         actionLight->setText(QApplication::translate("MainWindow", "Light", 0));
+        actionBlue->setText(QApplication::translate("MainWindow", "Blue", 0));
         groupBox->setTitle(QApplication::translate("MainWindow", "GroupBox", 0));
         eraseButton->setText(QString());
         eyedropButton->setText(QString());
