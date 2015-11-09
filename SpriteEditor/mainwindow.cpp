@@ -1,7 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QFlags>
-
+#include <QSize>
+#include <QRect>
+#include <QPoint>
+#include <iostream>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -23,12 +26,9 @@ MainWindow::MainWindow(QWidget *parent) :
     colorSelector->setOption(QColorDialog::ShowAlphaChannel);
     colorSelector->setOption(QColorDialog::NoButtons);
     colorSelector->setOption(QColorDialog::DontUseNativeDialog);
-
-    // Dock widget is used to place the color selector on the main window
-    ui->dockWidget_2->setWidget(colorSelector);
-    ui->dockWidget_2->setFloating(false);
-    colorSelector->resize(12, 6);
+    ui->colorSelectorScroller->setWidget(colorSelector);
     colorSelector->setVisible(true);
+
 
 
     themes = new Themes();
