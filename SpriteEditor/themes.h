@@ -14,7 +14,7 @@ public:
 
     std::vector<QPalette> paletteList;
 
-    enum ThemeColor { DEFAULT = 0, DARK = 1, LIGHT = 2 };
+    enum ThemeColor { DEFAULT = 0, DARK = 1, LIGHT = 2, BLUE = 3 };
 
     void changeTheme(int themeColor);
 

@@ -1,8 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QFlags>
-#include <vector>
-
+#include <QGraphicsScene>
 
 
 
@@ -26,21 +25,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->colorSelectorScroller->setWidget(colorSelector);
     colorSelector->setVisible(true);
 
-
     themes = new Themes();
 
-
-    // Buttons for frames
-
-
-
+    p = new QPixmap(700, 700);
 }
 
 /*
 void MainWindow::paintEvent(QPaintEvent *) {
     //set painter to pixmap of current frame
     QPainter * painter = new QPainter(paintedFrames[currentFrameIndex]);
-
     QColor[][] * currentFrameMap = frames->at(currentFrameIndex);
     //draw every pixel in the pixel
     for(int i = 0; i < canvasSize; i++) {
@@ -77,8 +70,55 @@ void MainWindow::on_actionLight_triggered()
 {
     qDebug("Light triggered");
     statusBar()->showMessage("Light theme enabled");
-    themes->changeTheme(Themes::DEFAULT);
+    themes->changeTheme(Themes::LIGHT);
 }
+
+void MainWindow::on_dockWidget_2_visibilityChanged(bool visible)
+{
+
+}
+
+void MainWindow::on_actionBlue_triggered()
+{
+    statusBar()->showMessage("Blue theme enabled");
+    themes->changeTheme(Themes::BLUE);
+}
+
+void MainWindow::mousePressEvent(QMouseEvent *event)
+{
+    // Gets the cursor's current position.
+    xPos = event->pos().x();
+    yPos = event->pos().y();
+
+    // Determines if the cursor is in a drawing area.
+    if (xPos >= 200 && xPos < 600 && yPos <= 320)
+    {
+    // Calculates position for grid.
+    xPos = (xPos / 40) * 40;
+    yPos = (yPos / 40) * 40;
+
+    // Adds the point to the list of points to draw.
+    QPoint point = QPoint(xPos, yPos);
+    pointsList.push_back(point);
+
+    // Draws the points onto the canvas.
+    QPainter painter(p);
+    QRect rect = QRect(xPos, yPos, 40, 40);
+    painter.drawRect(rect);
+    painter.fillRect(rect, Qt::black);
+    repaint();
+
+    }
+}
+
+void MainWindow::paintEvent(QPaintEvent *event)
+{
+    QPainter painter(this);
+    painter.drawPixmap(0,0,700,700,*p);
+}
+
+
+
 
 
 

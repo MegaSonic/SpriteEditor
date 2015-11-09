@@ -29,6 +29,15 @@ private slots:
 
     void on_actionLight_triggered();
 
+    void on_dockWidget_2_visibilityChanged(bool visible);
+
+    void on_actionBlue_triggered();
+
+    void paintEvent(QPaintEvent *event);
+
+    void mousePressEvent(QMouseEvent *event);
+
+
 private:
     Ui::MainWindow *ui;
     QColor *currentColor;
@@ -38,6 +47,10 @@ private:
     QColorDialog* colorSelector;
     Themes* themes;
 
+    int xPos;
+    int yPos;
+    std::list<QPoint> pointsList;
+    QPixmap *p;
 
     //size of square canvas
     unsigned int canvasSize;

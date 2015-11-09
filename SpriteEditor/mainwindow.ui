@@ -20,49 +20,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">* {
-background-color: rgb(48, 48, 48);
-color: white;
-}
-
-QMenu {
-background-color: rgb(48, 48, 48);
-color: white;
-border-color: rgb(48, 48, 48);
-background: rgb(48, 48, 48);
-}
-
-QMenuBar {
-background-color: transparent;
-}
-
-QMenuBar::item {
-color : white;
-margin-top:4px;
-spacing: 3px;
-padding: 1px 10px;
-background: transparent;
-border-radius: 4px;
-}
-
-QPushButton {
-color: white;
-background-color: qlineargradient(spread:pad, x1:0.478, y1:1, x2:0.494, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
-border-width: 1px;
-border-color: #339;
-border-style: solid;
-padding: 15px;
-padding-left: 10px;
-padding-right: 10px;
-min-width: 50px;
-max-width: 50px;
-min-height: 13px;
-max-height: 13px;
-}
-
-
-
-</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QGroupBox" name="groupBox">
@@ -304,8 +262,13 @@ max-height: 13px;
     <rect>
      <x>0</x>
      <y>0</y>
+<<<<<<< HEAD
      <width>733</width>
      <height>22</height>
+=======
+     <width>810</width>
+     <height>21</height>
+>>>>>>> 9ba6b37ac6ba455146af6a4e7f31cd76794a904c
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -328,6 +291,7 @@ max-height: 13px;
     </property>
     <addaction name="actionDark"/>
     <addaction name="actionLight"/>
+    <addaction name="actionBlue"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -362,6 +326,11 @@ max-height: 13px;
   <action name="actionLight">
    <property name="text">
     <string>Light</string>
+   </property>
+  </action>
+  <action name="actionBlue">
+   <property name="text">
+    <string>Blue</string>
    </property>
   </action>
  </widget>
