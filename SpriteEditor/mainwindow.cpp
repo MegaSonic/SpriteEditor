@@ -25,13 +25,14 @@ MainWindow::MainWindow(QWidget *parent) :
     colorSelector->setOption(QColorDialog::DontUseNativeDialog);
     ui->colorSelectorScroller->setWidget(colorSelector);
     colorSelector->setVisible(true);
+    colorSelector->setWhatsThis("Scroll this area to select a color and transparency");
 
     themes = new Themes();
 
     frameCount = 1;
-    p = new QPixmap(700, 700);
+    currentFrame = new QPixmap(700, 700);
 
-    frames.push_back(p);
+    frames.push_back(currentFrame);
     QString s = "Frame ";
     s.append(QString::number(frameCount));
     ui->listWidget->addItem(s);
@@ -83,7 +84,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event) {
             pointsList.push_back(point);
 
             // Draws the points onto the canvas.
-            QPainter painter(p);
+            QPainter painter(currentFrame);
             QRect rect = QRect(xPos, yPos, 40, 40);
             painter.drawRect(rect);
             painter.fillRect(rect, Qt::black);
@@ -135,7 +136,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     pointsList.push_back(point);
 
     // Draws the points onto the canvas.
-    QPainter painter(p);
+    QPainter painter(currentFrame);
     QRect rect = QRect(xPos, yPos, 40, 40);
     painter.drawRect(rect);
     painter.fillRect(rect, Qt::black);
@@ -147,7 +148,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 void MainWindow::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
-    painter.drawPixmap(0,0,700,700,*p);
+    painter.drawPixmap(0,0,700,700,*currentFrame);
 }
 
 

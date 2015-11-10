@@ -55,7 +55,7 @@ private:
     int xPos;
     int yPos;
     std::list<QPoint> pointsList;
-    QPixmap *p;
+    QPixmap *currentFrame;
 
     //size of square canvas
     unsigned int canvasSize;
