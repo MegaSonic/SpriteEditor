@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>733</width>
-    <height>480</height>
+    <width>839</width>
+    <height>583</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -151,22 +151,25 @@
      <rect>
       <x>600</x>
       <y>0</y>
-      <width>200</width>
-      <height>220</height>
+      <width>211</width>
+      <height>221</height>
      </rect>
     </property>
     <property name="title">
      <string>GroupBox</string>
     </property>
    </widget>
-   <widget class="QScrollArea" name="scrollArea_2">
+   <widget class="QScrollArea" name="frameScroll">
     <property name="geometry">
      <rect>
       <x>600</x>
       <y>220</y>
-      <width>200</width>
-      <height>340</height>
+      <width>211</width>
+      <height>321</height>
      </rect>
+    </property>
+    <property name="lineWidth">
+     <number>4</number>
     </property>
     <property name="widgetResizable">
      <bool>true</bool>
@@ -176,10 +179,98 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>198</width>
-       <height>338</height>
+       <width>209</width>
+       <height>319</height>
       </rect>
      </property>
+     <widget class="QPushButton" name="newFramButton">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>280</y>
+        <width>61</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>New</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <property name="autoExclusive">
+       <bool>false</bool>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="deleteFrameButton">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>280</y>
+        <width>61</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Delete</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="copyFrameButton">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>280</y>
+        <width>61</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Copy</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="onionSkinButton">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>280</y>
+        <width>61</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Onion
+Skin</string>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QWidget" name="editor" native="true">
@@ -214,9 +305,9 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>100</y>
+      <y>90</y>
       <width>201</width>
-      <height>351</height>
+      <height>451</height>
      </rect>
     </property>
     <property name="widgetResizable">
@@ -228,32 +319,9 @@
        <x>0</x>
        <y>0</y>
        <width>199</width>
-       <height>349</height>
+       <height>449</height>
       </rect>
      </property>
-     <widget class="QScrollArea" name="scrollArea">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>100</y>
-        <width>200</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>198</width>
-         <height>79</height>
-        </rect>
-       </property>
-      </widget>
-     </widget>
     </widget>
    </widget>
   </widget>
@@ -262,8 +330,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>810</width>
-     <height>21</height>
+     <width>839</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
