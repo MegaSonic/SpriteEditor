@@ -48,7 +48,7 @@ private:
     QColorDialog* colorSelector;
     Themes* themes;
 
-    std::vector<QPixmap> frames;
+    std::vector<QPixmap*> frames;
     std::vector<QPushButton> frameButtons;
     int frameCount;
 

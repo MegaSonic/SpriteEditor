@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QFlags>
 #include <QGraphicsScene>
+#include <QString>
 
 
 
@@ -27,12 +28,15 @@ MainWindow::MainWindow(QWidget *parent) :
 
     themes = new Themes();
 
+    frameCount = 1;
     p = new QPixmap(700, 700);
 
-    QPushButton p1(ui->frameScrollContents);
-    p1.setText("Frame ");
-    //ui->frameScrollContents->
-    p1.setVisible(true);
+    frames.push_back(p);
+    QString s = "Frame ";
+    s.append(QString::number(frameCount));
+    ui->listWidget->addItem(s);
+
+
 
 }
 
