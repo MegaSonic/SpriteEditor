@@ -55,8 +55,31 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::mouseMoveEvent(QMouseEvent *event) {
-    statusBar()->showMessage(event->pos().x() + ", " + event->pos().y());
-    qDebug() << event->pos();
+    if (event->buttons() & Qt::LeftButton) {
+        // Gets the cursor's current position.
+        xPos = event->pos().x();
+        yPos = event->pos().y();
+
+        // Determines if the cursor is in a drawing area.
+        if (xPos >= 200 && xPos < 600 && yPos < 320)
+        {
+            // Calculates position for grid.
+            xPos = (xPos / 40) * 40;
+            yPos = (yPos / 40) * 40;
+
+            // Adds the point to the list of points to draw.
+            QPoint point = QPoint(xPos, yPos);
+
+            pointsList.push_back(point);
+
+            // Draws the points onto the canvas.
+            QPainter painter(p);
+            QRect rect = QRect(xPos, yPos, 40, 40);
+            painter.drawRect(rect);
+            painter.fillRect(rect, Qt::black);
+            repaint();
+        }
+    }
 }
 
 void MainWindow::on_actionDark_triggered()
@@ -91,7 +114,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     yPos = event->pos().y();
 
     // Determines if the cursor is in a drawing area.
-    if (xPos >= 200 && xPos < 600 && yPos <= 320)
+    if (xPos >= 200 && xPos < 600 && yPos < 320)
     {
     // Calculates position for grid.
     xPos = (xPos / 40) * 40;
