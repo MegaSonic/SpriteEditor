@@ -28,6 +28,12 @@ MainWindow::MainWindow(QWidget *parent) :
     themes = new Themes();
 
     p = new QPixmap(700, 700);
+
+    QPushButton p1(ui->frameScrollContents);
+    p1.setText("Frame ");
+    //ui->frameScrollContents->
+    p1.setVisible(true);
+
 }
 
 /*

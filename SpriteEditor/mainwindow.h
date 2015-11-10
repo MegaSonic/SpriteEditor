@@ -8,6 +8,7 @@
 #include <QMouseEvent>
 #include <QDebug>
 #include <QColorDialog>
+#include <QPushButton>
 #include "themes.h"
 
 namespace Ui {
@@ -46,6 +47,10 @@ private:
     QPainter* canvasPainter;
     QColorDialog* colorSelector;
     Themes* themes;
+
+    std::vector<QPixmap> frames;
+    std::vector<QPushButton> frameButtons;
+    int frameCount;
 
     int xPos;
     int yPos;
