@@ -255,7 +255,7 @@ Skin</string>
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="Canvas" name="canvas">
     <property name="geometry">
      <rect>
       <x>300</x>
@@ -263,6 +263,9 @@ Skin</string>
       <width>211</width>
       <height>191</height>
      </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
     </property>
     <property name="text">
      <string/>
@@ -342,6 +345,13 @@ Skin</string>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>Canvas</class>
+   <extends>QLabel</extends>
+   <header location="global">canvas.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="resources.qrc"/>
  </resources>

@@ -15,11 +15,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     qcolormatrix.cpp \
-    themes.cpp
+    themes.cpp \
+    canvas.cpp
 
 HEADERS  += mainwindow.h \
     qcolormatrix.h \
-    themes.h
+    themes.h \
+    canvas.h
 
 FORMS    += mainwindow.ui
 
