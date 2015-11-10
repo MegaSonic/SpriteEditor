@@ -244,7 +244,7 @@
      </widget>
     </widget>
    </widget>
-   <widget class="QPushButton" name="onionSkinButton_2">
+   <widget class="QPushButton" name="onionSkinButton">
     <property name="geometry">
      <rect>
       <x>745</x>
@@ -263,7 +263,7 @@
 Skin</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="deleteFrameButton_2">
+   <widget class="QPushButton" name="deleteFrameButton">
     <property name="geometry">
      <rect>
       <x>645</x>
@@ -281,7 +281,7 @@ Skin</string>
      <string>Delete</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="copyFrameButton_2">
+   <widget class="QPushButton" name="copyFrameButton">
     <property name="geometry">
      <rect>
       <x>695</x>
@@ -299,7 +299,7 @@ Skin</string>
      <string>Copy</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="newFrameButton_2">
+   <widget class="QPushButton" name="newFrameButton">
     <property name="geometry">
      <rect>
       <x>595</x>

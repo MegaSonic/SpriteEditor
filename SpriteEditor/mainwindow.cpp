@@ -29,6 +29,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     themes = new Themes();
 
+    // Initialize the first frame
     frameCount = 1;
     currentFrame = new QPixmap(700, 700);
 
@@ -152,7 +153,29 @@ void MainWindow::paintEvent(QPaintEvent *event)
 }
 
 
+void MainWindow::on_newFrameButton_clicked()
+{
+    currentFrame = new QPixmap(700, 700);
+    frameCount++;
+    frames.push_back(currentFrame);
+    QString s = "Frame ";
+    s.append(QString::number(frameCount));
+    ui->listWidget->addItem(s);
 
 
+}
 
+void MainWindow::on_deleteFrameButton_clicked()
+{
 
+}
+
+void MainWindow::on_copyFrameButton_clicked()
+{
+
+}
+
+void MainWindow::on_onionSkinButton_clicked()
+{
+
+}

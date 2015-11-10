@@ -38,6 +38,7 @@ private slots:
 
     void mousePressEvent(QMouseEvent *event);
 
+    void on_newFrameButton_clicked();
 
 private:
     Ui::MainWindow *ui;
