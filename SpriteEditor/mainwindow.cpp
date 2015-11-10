@@ -184,6 +184,8 @@ void MainWindow::on_deleteFrameButton_clicked()
 
 void MainWindow::on_copyFrameButton_clicked()
 {
+    QPixmap newFrame = currentFrame->copy();
+
 
 }
 
@@ -204,4 +206,6 @@ void MainWindow::on_listWidget_itemClicked(QListWidgetItem *item)
      currentFrameNumber = getFrameNumber(selectedItem->text());
      qDebug() << selectedItem->text()<< endl;
      currentFrame = frames[currentFrameNumber];
+     QPainter p(currentFrame);
+     repaint();
 }
