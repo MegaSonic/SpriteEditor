@@ -1,1 +1,3 @@
-/build-SpriteEditor-Desktop_Qt_5_5_1_MinGW_32bit-Debug/
+build-SpriteEditor*/
+*.user
+*.user.*

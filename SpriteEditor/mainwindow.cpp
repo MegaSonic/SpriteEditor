@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     colorSelector->setOption(QColorDialog::ShowAlphaChannel);
     colorSelector->setOption(QColorDialog::NoButtons);
     colorSelector->setOption(QColorDialog::DontUseNativeDialog);
-    ui->colorSelectorScroller->setWidget(colorSelector);
+    //ui->colorSelectorScroller->setWidget(colorSelector);
     colorSelector->setVisible(true);
 
     themes = new Themes();
