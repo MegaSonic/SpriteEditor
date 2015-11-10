@@ -6,14 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>839</width>
-    <height>583</height>
+    <width>810</width>
+    <height>502</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>320</width>
-    <height>240</height>
+    <width>810</width>
+    <height>502</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>810</width>
+    <height>502</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -151,8 +157,8 @@
      <rect>
       <x>600</x>
       <y>0</y>
-      <width>211</width>
-      <height>221</height>
+      <width>200</width>
+      <height>220</height>
      </rect>
     </property>
     <property name="title">
@@ -181,7 +187,7 @@
        <y>0</y>
        <width>209</width>
        <height>319</height>
-      </rect>
+     </rect>
      </property>
      <widget class="QPushButton" name="newFramButton">
       <property name="geometry">
@@ -330,8 +336,8 @@ Skin</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>839</width>
-     <height>22</height>
+     <width>810</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
