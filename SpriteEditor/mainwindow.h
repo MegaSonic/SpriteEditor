@@ -9,6 +9,8 @@
 #include <QDebug>
 #include <QColorDialog>
 #include <QPushButton>
+#include <QListWidgetItem>
+#include <map>
 #include "themes.h"
 
 namespace Ui {
@@ -40,6 +42,14 @@ private slots:
 
     void on_newFrameButton_clicked();
 
+    void on_deleteFrameButton_clicked();
+
+    void on_copyFrameButton_clicked();
+
+    void on_onionSkinButton_clicked();
+
+    void on_listWidget_itemClicked(QListWidgetItem *item);
+
 private:
     Ui::MainWindow *ui;
     QColor *currentColor;
@@ -49,9 +59,10 @@ private:
     QColorDialog* colorSelector;
     Themes* themes;
 
-    std::vector<QPixmap*> frames;
-    std::vector<QPushButton> frameButtons;
+    std::map<int, QPixmap*> frames;
     int frameCount;
+    int currentFrameNumber;
+    QListWidgetItem* selectedItem;
 
     int xPos;
     int yPos;
@@ -68,6 +79,7 @@ private:
 
 
     void paintSprite(QWidget * canvas, int frameIndex);
+    int getFrameNumber(QString s);
 
 
 };

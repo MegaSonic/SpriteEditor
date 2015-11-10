@@ -33,10 +33,14 @@ MainWindow::MainWindow(QWidget *parent) :
     frameCount = 1;
     currentFrame = new QPixmap(700, 700);
 
-    frames.push_back(currentFrame);
+    frames[frameCount] = currentFrame;
+    //frames.push_back(currentFrame);
     QString s = "Frame ";
     s.append(QString::number(frameCount));
     ui->listWidget->addItem(s);
+
+    //Connections
+    connect(ui->listWidget, SIGNAL(itemClicked(QListWidgetItem *)), this, SLOT(on_listWidget_itemClicked(QListWidgetItem *item)));
 
 
 
@@ -155,18 +159,26 @@ void MainWindow::paintEvent(QPaintEvent *event)
 
 void MainWindow::on_newFrameButton_clicked()
 {
+    // Make & keep track of new frame
     currentFrame = new QPixmap(700, 700);
     frameCount++;
-    frames.push_back(currentFrame);
+
+    //Add to list
+    frames[frameCount] = currentFrame;
     QString s = "Frame ";
     s.append(QString::number(frameCount));
     ui->listWidget->addItem(s);
-
 
 }
 
 void MainWindow::on_deleteFrameButton_clicked()
 {
+    //  Erase from frames internal list
+    frames.erase(currentFrameNumber);
+
+    // Erase from list view
+    ui->listWidget->takeItem(ui->listWidget->row(selectedItem));
+
 
 }
 
@@ -178,4 +190,18 @@ void MainWindow::on_copyFrameButton_clicked()
 void MainWindow::on_onionSkinButton_clicked()
 {
 
+}
+
+// Gets the frame number from the listWidget tect.
+int MainWindow::getFrameNumber(QString s){
+    s.remove(0, 6);
+    return s.toInt();
+}
+
+void MainWindow::on_listWidget_itemClicked(QListWidgetItem *item)
+{
+     selectedItem = item;
+     currentFrameNumber = getFrameNumber(selectedItem->text());
+     qDebug() << selectedItem->text()<< endl;
+     currentFrame = frames[currentFrameNumber];
 }
