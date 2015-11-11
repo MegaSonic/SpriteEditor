@@ -22,6 +22,7 @@ signals:
 
 public slots:
     void myMousePressEvent(QMouseEvent * event);
+    void paintEvent(QPaintEvent *event);
 };
 
 #endif // CANVAS_H

@@ -45,7 +45,7 @@ private slots:
 
     void on_actionBlue_triggered();
 
-    void paintEvent(QPaintEvent *event);
+    //void paintEvent(QPaintEvent *event);
 
     //void mousePressEvent(QMouseEvent *event);
 

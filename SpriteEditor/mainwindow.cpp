@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     //TODO This needs to be moved to an init func
-    canvasSize = 32;
+    canvasSize = 32 * 32;
 
     canvasPainter = new QPainter();
 
@@ -32,6 +32,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // Initialize the first frame
     frameCount = 1;
     currentFrame = new QPixmap(canvasSize, canvasSize);
+    currentFrame->fill(Qt::white);
 
     frames[frameCount] = currentFrame;
     //frames.push_back(currentFrame);
@@ -149,12 +150,13 @@ void MainWindow::on_actionBlue_triggered()
 //    }
 //}
 
+/*
 void MainWindow::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
     painter.drawPixmap(0,0,700,700,*currentFrame);
 }
-
+*/
 
 void MainWindow::on_newFrameButton_clicked()
 {
