@@ -117,13 +117,16 @@ void MainWindow::on_newFrameButton_clicked()
 
 void MainWindow::on_deleteFrameButton_clicked()
 {
-    //  Erase from frames internal list
-    frames.erase(currentFrameNumber);
+    if (frames.size() > 1)
+    {
+        currentFrame = frames[frameCount - 1];
 
-    // Erase from list view
-    ui->listWidget->takeItem(ui->listWidget->row(selectedItem));
+        frames.erase(currentFrameNumber);
 
+        ui->listWidget->takeItem(ui->listWidget->row(selectedItem));
 
+        repaint();
+    }
 }
 
 void MainWindow::on_copyFrameButton_clicked()

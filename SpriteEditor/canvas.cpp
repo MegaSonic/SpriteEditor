@@ -26,7 +26,9 @@ void Canvas::myMousePressEvent(QMouseEvent *event)
 
     QRect rect = QRect(xRel, yRel, 16, 16);
     painter.drawRect(rect);
-    painter.fillRect(rect, mainWindowRef->getCurrentColor());
+    QColor colorFill = mainWindowRef->getCurrentColor();
+    colorFill.setAlpha(255);
+    painter.fillRect(rect, colorFill);
 
     painter.end();
     repaint();
@@ -55,6 +57,9 @@ void Canvas::myMouseMoveEvent(QMouseEvent *event)
         QRect rect = QRect(xRel, yRel, 16, 16);
         painter.drawRect(rect);
         painter.fillRect(rect, mainWindowRef->getCurrentColor());
+        QColor colorFill = mainWindowRef->getCurrentColor();
+        colorFill.setAlpha(255);
+        painter.fillRect(rect, colorFill);
 
         painter.end();
         repaint();
