@@ -21,14 +21,14 @@ void FileIO::save(std::vector<QImage> images, QString filePath) {
     // Create or open a file at file path
     QFile file(filePath);
 
-    if (file.open(QIODevice::ReadWrite)) {
+    if (file.open(QIODevice::WriteOnly|QIODevice::Text)) {
         // Create our text stream
         QTextStream stream(&file);
 
         // First, write the height, width, and number of frames in the image
 
-        stream << firstImage.height() << " " << firstImage.width() << "\n";
-        stream << images.size() << "\n";
+        stream << firstImage.height() << " " << firstImage.width() << "\r\n";
+        stream << images.size() << "\r\n";
 
         // Iterate over every image
         for (std::vector<QImage>::iterator it = images.begin(); it != images.end(); it++) {
@@ -40,9 +40,9 @@ void FileIO::save(std::vector<QImage> images, QString filePath) {
 
                     // Get the pixel, and save it in the file
                     QColor pixel = image.pixel(w, h);
-                    stream << pixel.red() << " " << pixel.green() << " " << pixel.blue() << " " << pixel.alpha();
+                    stream << pixel.red() << " " << pixel.green() << " " << pixel.blue() << " " << pixel.alpha() << " ";
                 }
-                stream << "\n";
+                stream << "\r\n";
             }
         }
 

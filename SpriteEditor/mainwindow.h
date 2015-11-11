@@ -12,6 +12,9 @@
 #include <QListWidgetItem>
 #include <map>
 #include "themes.h"
+#include "fileio.h"
+#include <QtGui>
+#include <QFileDialog>
 
 namespace Ui {
 class MainWindow;
@@ -66,6 +69,10 @@ private slots:
 
     void on_pingPongButton_toggled(bool checked);
 
+    void on_actionSave_triggered();
+
+    void on_actionSave_As_triggered();
+
 private:
     Ui::MainWindow *ui;
     QColor *currentColor;
@@ -74,6 +81,7 @@ private:
     QPainter* canvasPainter;
     QColorDialog* colorSelector;
     Themes* themes;
+    FileIO* fileIO;
 
     std::map<int, QPixmap*> frames;
     int frameCount;
@@ -87,6 +95,10 @@ private:
 
     int frameRate;
     PreviewMode previewMode;
+
+    QString fileName;
+    bool hasBeenSavedOnce;
+    bool isCurrentlySaved;
 
     //size of square canvas
     unsigned int canvasSize;

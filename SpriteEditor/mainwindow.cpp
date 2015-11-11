@@ -27,6 +27,10 @@ MainWindow::MainWindow(QWidget *parent) :
     colorSelector->setWhatsThis("Scroll this area to select a color and transparency");
 
     themes = new Themes();
+    fileIO = new FileIO();
+
+    hasBeenSavedOnce = false;
+    isCurrentlySaved = false;
 
     // Initialize the first frame
     frameCount = 1;
@@ -65,6 +69,7 @@ MainWindow::~MainWindow() {
     delete ui;
     delete canvasPainter;
     delete themes;
+    delete fileIO;
 }
 
 void MainWindow::on_actionDark_triggered()
@@ -211,4 +216,36 @@ void MainWindow::on_pingPongButton_toggled(bool checked)
         previewMode = MainWindow::PINGPONG;
         statusBar()->showMessage("Set to pingpong preview.");
     }
+}
+
+void MainWindow::on_actionSave_triggered()
+{
+    if (!hasBeenSavedOnce) {
+        MainWindow::fileName = QFileDialog::getSaveFileName(this, "Save file", "", ".ssp");
+        fileName.append(".ssp");
+        std::vector<QImage> imagesToSave;
+        for (std::map<int, QPixmap*>::iterator it = frames.begin(); it != frames.end(); it++) {
+            QPixmap* image = frames[it->first];
+            QImage convertedImage = image->toImage();
+            imagesToSave.push_back(convertedImage);
+        }
+        fileIO->save(imagesToSave, fileName);
+        hasBeenSavedOnce = true;
+        isCurrentlySaved = true;
+    }
+}
+
+void MainWindow::on_actionSave_As_triggered()
+{
+    MainWindow::fileName = QFileDialog::getSaveFileName(this, "Save file", "", ".ssp");
+    fileName.append(".ssp");
+    std::vector<QImage> imagesToSave;
+    for (std::map<int, QPixmap*>::iterator it = frames.begin(); it != frames.end(); it++) {
+        QPixmap* image = frames[it->first];
+        QImage convertedImage = image->toImage();
+        imagesToSave.push_back(convertedImage);
+    }
+    fileIO->save(imagesToSave, fileName);
+    hasBeenSavedOnce = true;
+    isCurrentlySaved = true;
 }
