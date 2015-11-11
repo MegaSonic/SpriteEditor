@@ -11,8 +11,9 @@ FileIO::FileIO()
 /// \param filePath     The filepath to be saved to
 ///
 void FileIO::save(std::vector<QImage> images, QString filePath) {
+    QImage firstImage = images.at(0);
     // This converts the image to use RGBA 32-bit format, probably not needed
-    image = image.convertToFormat(QImage::Format_RGBA8888);
+    firstImage = firstImage.convertToFormat(QImage::Format_RGBA8888);
 
     // Get the bits from the image
     // uchar* bits = image.bits();
@@ -25,7 +26,7 @@ void FileIO::save(std::vector<QImage> images, QString filePath) {
         QTextStream stream(&file);
 
         // First, write the height, width, and number of frames in the image
-        QImage firstImage = images.at(0);
+
         stream << firstImage.height() << " " << firstImage.width() << "\n";
         stream << images.size() << "\n";
 
@@ -38,8 +39,8 @@ void FileIO::save(std::vector<QImage> images, QString filePath) {
                 for (int w = 0; w < image.width(); w++) {
 
                     // Get the pixel, and save it in the file
-                    QRgb pixel = image.pixel(w, h);
-                    stream << pixel.qRed() << " " << pixel.qGreen() << " " << pixel.qBlue() << " " << pixel.qAlpha();
+                    QColor pixel = image.pixel(w, h);
+                    stream << pixel.red() << " " << pixel.green() << " " << pixel.blue() << " " << pixel.alpha();
                 }
                 stream << "\n";
             }
