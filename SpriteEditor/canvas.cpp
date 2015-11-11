@@ -29,6 +29,7 @@ void Canvas::myMousePressEvent(QMouseEvent *event)
     QColor colorFill = mainWindowRef->getCurrentColor();
     colorFill.setAlpha(255);
     painter.fillRect(rect, colorFill);
+    mainWindowRef->isCurrentlySaved = false;
 
     painter.end();
     repaint();
@@ -60,6 +61,7 @@ void Canvas::myMouseMoveEvent(QMouseEvent *event)
         QColor colorFill = mainWindowRef->getCurrentColor();
         colorFill.setAlpha(255);
         painter.fillRect(rect, colorFill);
+        mainWindowRef->isCurrentlySaved = false;
 
         painter.end();
         repaint();

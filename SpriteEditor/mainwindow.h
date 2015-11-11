@@ -35,6 +35,9 @@ public:
 
     enum PreviewMode { LOOP = 0, PINGPONG = 1 };
 
+    bool hasBeenSavedOnce;
+    bool isCurrentlySaved;
+
     PreviewMode getPreviewMode();
     int getFrameRate();
 
@@ -97,8 +100,7 @@ private:
     PreviewMode previewMode;
 
     QString fileName;
-    bool hasBeenSavedOnce;
-    bool isCurrentlySaved;
+
 
     //size of square canvas
     unsigned int canvasSize;
