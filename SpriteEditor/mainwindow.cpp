@@ -17,7 +17,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     canvasPainter = new QPainter();
 
-
     // Set up the color selector
     colorSelector = new QColorDialog(parent);
     colorSelector->setOption(QColorDialog::ShowAlphaChannel);
