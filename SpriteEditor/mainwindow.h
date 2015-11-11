@@ -24,7 +24,11 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void mouseMoveEvent(QMouseEvent* event);
+//    void mouseMoveEvent(QMouseEvent* event);
+
+    QPixmap* getCurrentFrame();
+
+    QColor getCurrentColor();
 
 private slots:
 
@@ -38,7 +42,7 @@ private slots:
 
     void paintEvent(QPaintEvent *event);
 
-    void mousePressEvent(QMouseEvent *event);
+    //void mousePressEvent(QMouseEvent *event);
 
     void on_newFrameButton_clicked();
 
@@ -49,6 +53,7 @@ private slots:
     void on_onionSkinButton_clicked();
 
     void on_listWidget_itemClicked(QListWidgetItem *item);
+
 
 private:
     Ui::MainWindow *ui;

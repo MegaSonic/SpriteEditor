@@ -258,17 +258,27 @@ Skin</string>
    <widget class="Canvas" name="canvas">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>110</y>
-      <width>211</width>
-      <height>191</height>
+      <x>255</x>
+      <y>90</y>
+      <width>300</width>
+      <height>300</height>
      </rect>
     </property>
     <property name="mouseTracking">
      <bool>true</bool>
     </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 1px;
+background-color: white;</string>
+    </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
@@ -350,10 +360,47 @@ Skin</string>
    <class>Canvas</class>
    <extends>QLabel</extends>
    <header location="global">canvas.h</header>
+   <slots>
+    <signal>mousePressEvent(QMouseEvent*)</signal>
+    <slot>myMousePressEvent(QMouseEvent*)</slot>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources>
   <include location="resources.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>canvas</sender>
+   <signal>mouseEvent(QMouseEvent*)</signal>
+   <receiver>canvas</receiver>
+   <slot>myMousePressEvent(QMouseEvent*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>371</x>
+     <y>317</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>371</x>
+     <y>317</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>canvas</sender>
+   <signal>mousePressEvent(QMouseEvent*)</signal>
+   <receiver>canvas</receiver>
+   <slot>myMousePressEvent(QMouseEvent*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>372</x>
+     <y>371</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>372</x>
+     <y>371</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

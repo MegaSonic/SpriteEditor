@@ -1,20 +1,27 @@
 #ifndef CANVAS_H
 #define CANVAS_H
 
+#include <QMainWindow>
 #include <QLabel>
 #include <QPixmap>
+#include <QPainter>
+#include "mainwindow.h"
+
 
 class Canvas : public QLabel
 {
     Q_OBJECT
+
+    MainWindow * mainWindowRef;
+
 public:
     explicit Canvas(QWidget *parent = 0);
 
 signals:
-    void mousePressEvent(QMouseEvent * mEvent);
+    void mousePressEvent(QMouseEvent * event);
 
 public slots:
-
+    void myMousePressEvent(QMouseEvent * event);
 };
 
 #endif // CANVAS_H

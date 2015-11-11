@@ -12,9 +12,9 @@ MainWindow::MainWindow(QWidget *parent) :
     currentColor(new QColor()) {
     ui->setupUi(this);
 
-    canvasImage = new QImage();
-    canvasImage->size().setHeight(800);
-    canvasImage->size().setWidth(600);
+    //TODO This needs to be moved to an init func
+    canvasSize = 32;
+
     canvasPainter = new QPainter();
 
 
@@ -31,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Initialize the first frame
     frameCount = 1;
-    currentFrame = new QPixmap(700, 700);
+    currentFrame = new QPixmap(canvasSize, canvasSize);
 
     frames[frameCount] = currentFrame;
     //frames.push_back(currentFrame);
@@ -65,38 +65,37 @@ void MainWindow::paintEvent(QPaintEvent *) {
 
 MainWindow::~MainWindow() {
     delete ui;
-    delete canvasImage;
     delete canvasPainter;
     delete themes;
 }
 
-void MainWindow::mouseMoveEvent(QMouseEvent *event) {
-    if (event->buttons() & Qt::LeftButton) {
-        // Gets the cursor's current position.
-        xPos = event->pos().x();
-        yPos = event->pos().y();
+//void MainWindow::mouseMoveEvent(QMouseEvent *event) {
+//    if (event->buttons() & Qt::LeftButton) {
+//        // Gets the cursor's current position.
+//        xPos = event->pos().x();
+//        yPos = event->pos().y();
 
-        // Determines if the cursor is in a drawing area.
-        if (xPos >= 200 && xPos < 600 && yPos < 320)
-        {
-            // Calculates position for grid.
-            xPos = (xPos / 40) * 40;
-            yPos = (yPos / 40) * 40;
+//        // Determines if the cursor is in a drawing area.
+//        if (xPos >= 200 && xPos < 600 && yPos < 320)
+//        {
+//            // Calculates position for grid.
+//            xPos = (xPos / 40) * 40;
+//            yPos = (yPos / 40) * 40;
 
-            // Adds the point to the list of points to draw.
-            QPoint point = QPoint(xPos, yPos);
+//            // Adds the point to the list of points to draw.
+//            QPoint point = QPoint(xPos, yPos);
 
-            pointsList.push_back(point);
+//            pointsList.push_back(point);
 
-            // Draws the points onto the canvas.
-            QPainter painter(currentFrame);
-            QRect rect = QRect(xPos, yPos, 40, 40);
-            painter.drawRect(rect);
-            painter.fillRect(rect, Qt::black);
-            repaint();
-        }
-    }
-}
+//            // Draws the points onto the canvas.
+//            QPainter painter(currentFrame);
+//            QRect rect = QRect(xPos, yPos, 40, 40);
+//            painter.drawRect(rect);
+//            painter.fillRect(rect, Qt::black);
+//            repaint();
+//        }
+//    }
+//}
 
 void MainWindow::on_actionDark_triggered()
 {
@@ -123,32 +122,32 @@ void MainWindow::on_actionBlue_triggered()
     themes->changeTheme(Themes::BLUE);
 }
 
-void MainWindow::mousePressEvent(QMouseEvent *event)
-{
-    // Gets the cursor's current position.
-    xPos = event->pos().x();
-    yPos = event->pos().y();
+//void MainWindow::mousePressEvent(QMouseEvent *event)
+//{
+//    // Gets the cursor's current position.
+//    xPos = event->pos().x();
+//    yPos = event->pos().y();
 
-    // Determines if the cursor is in a drawing area.
-    if (xPos >= 200 && xPos < 600 && yPos < 320)
-    {
-    // Calculates position for grid.
-    xPos = (xPos / 40) * 40;
-    yPos = (yPos / 40) * 40;
+//    // Determines if the cursor is in a drawing area.
+//    if (xPos >= 200 && xPos < 600 && yPos < 320)
+//    {
+//    // Calculates position for grid.
+//    xPos = (xPos / 40) * 40;
+//    yPos = (yPos / 40) * 40;
 
-    // Adds the point to the list of points to draw.
-    QPoint point = QPoint(xPos, yPos);
-    pointsList.push_back(point);
+//    // Adds the point to the list of points to draw.
+//    QPoint point = QPoint(xPos, yPos);
+//    pointsList.push_back(point);
 
-    // Draws the points onto the canvas.
-    QPainter painter(currentFrame);
-    QRect rect = QRect(xPos, yPos, 40, 40);
-    painter.drawRect(rect);
-    painter.fillRect(rect, Qt::black);
-    repaint();
+//    // Draws the points onto the canvas.
+//    QPainter painter(currentFrame);
+//    QRect rect = QRect(xPos, yPos, 40, 40);
+//    painter.drawRect(rect);
+//    painter.fillRect(rect, Qt::black);
+//    repaint();
 
-    }
-}
+//    }
+//}
 
 void MainWindow::paintEvent(QPaintEvent *event)
 {
@@ -208,4 +207,12 @@ void MainWindow::on_listWidget_itemClicked(QListWidgetItem *item)
      currentFrame = frames[currentFrameNumber];
      QPainter p(currentFrame);
      repaint();
+}
+
+QPixmap* MainWindow::getCurrentFrame() {
+    return currentFrame;
+}
+
+QColor MainWindow::getCurrentColor() {
+    return colorSelector->currentColor();
 }
