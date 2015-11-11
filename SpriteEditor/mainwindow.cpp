@@ -159,15 +159,21 @@ void MainWindow::paintEvent(QPaintEvent *event)
 void MainWindow::on_newFrameButton_clicked()
 {
     // Make & keep track of new frame
-    currentFrame = new QPixmap(700, 700);
-    frameCount++;
+        currentFrame = new QPixmap(700, 700);
+        frameCount++;
+        currentFrameNumber = frameCount;
 
-    //Add to list
-    frames[frameCount] = currentFrame;
-    QString s = "Frame ";
-    s.append(QString::number(frameCount));
-    ui->listWidget->addItem(s);
+        //Add to list
+        frames[frameCount] = currentFrame;
+        QString s = "Frame ";
+        s.append(QString::number(frameCount));
+        QListWidgetItem* item = new QListWidgetItem(s, 0);
+        ui->listWidget->addItem(item);
 
+        // Update gui
+        item->setSelected(true);
+        QPainter p(currentFrame);
+        repaint();
 }
 
 void MainWindow::on_deleteFrameButton_clicked()
@@ -183,8 +189,22 @@ void MainWindow::on_deleteFrameButton_clicked()
 
 void MainWindow::on_copyFrameButton_clicked()
 {
-    QPixmap newFrame = currentFrame->copy();
+    QPixmap* newFrame  = new QPixmap(*currentFrame);
+      currentFrame = newFrame;
+      frameCount++;
+      currentFrameNumber = frameCount;
 
+      //Add to list
+      frames[frameCount] = currentFrame;
+      QString s = "Frame ";
+      s.append(QString::number(frameCount));
+      QListWidgetItem* item = new QListWidgetItem(s, 0);
+      ui->listWidget->addItem(item);
+
+      // Update gui
+      item->setSelected(true);
+      QPainter p(currentFrame);
+      repaint();
 
 }
 
