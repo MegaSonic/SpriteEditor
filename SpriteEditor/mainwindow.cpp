@@ -32,7 +32,8 @@ MainWindow::MainWindow(QWidget *parent) :
     // Initialize the first frame
     frameCount = 1;
     currentFrame = new QPixmap(canvasSize, canvasSize);
-    currentFrame->fill(Qt::white);
+    QColor color(0,0,0,0);
+    currentFrame->fill(color);
 
     frames[frameCount] = currentFrame;
     //frames.push_back(currentFrame);
@@ -161,7 +162,9 @@ void MainWindow::paintEvent(QPaintEvent *event)
 void MainWindow::on_newFrameButton_clicked()
 {
     // Make & keep track of new frame
-        currentFrame = new QPixmap(700, 700);
+        currentFrame = new QPixmap(canvasSize, canvasSize);
+        QColor color(0,0,0,0);
+        currentFrame->fill(color);
         frameCount++;
         currentFrameNumber = frameCount;
 
