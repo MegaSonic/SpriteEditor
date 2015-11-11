@@ -26,8 +26,8 @@ void FileIO::save(std::vector<QImage> images, QString filePath) {
 
         // First, write the height, width, and number of frames in the image
         QImage firstImage = images.at(0);
-        stream << firstImage.height() << " " << firstImage.width() << endl;
-        stream << images.size() << endl;
+        stream << firstImage.height() << " " << firstImage.width() << "\n";
+        stream << images.size() << "\n";
 
         // Iterate over every image
         for (std::vector<QImage>::iterator it = images.begin(); it != images.end(); it++) {
