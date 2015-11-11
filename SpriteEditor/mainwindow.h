@@ -30,6 +30,11 @@ public:
 
     QColor getCurrentColor();
 
+    enum PreviewMode { LOOP = 0, PINGPONG = 1 };
+
+    PreviewMode getPreviewMode();
+    int getFrameRate();
+
 private slots:
 
     void on_actionDark_triggered();
@@ -55,6 +60,12 @@ private slots:
     void on_listWidget_itemClicked(QListWidgetItem *item);
 
 
+    void on_fpsCounter_valueChanged(int arg1);
+
+    void on_loopButton_toggled(bool checked);
+
+    void on_pingPongButton_toggled(bool checked);
+
 private:
     Ui::MainWindow *ui;
     QColor *currentColor;
@@ -73,6 +84,9 @@ private:
     int yPos;
     std::list<QPoint> pointsList;
     QPixmap *currentFrame;
+
+    int frameRate;
+    PreviewMode previewMode;
 
     //size of square canvas
     unsigned int canvasSize;

@@ -216,3 +216,38 @@ QPixmap* MainWindow::getCurrentFrame() {
 QColor MainWindow::getCurrentColor() {
     return colorSelector->currentColor();
 }
+
+void MainWindow::on_fpsCounter_valueChanged(int arg1)
+{
+    frameRate = arg1;
+    QString message;
+    message.append("Preview framerate changed to ");
+    message.append(QString::number(arg1));
+    message.append(".");
+    statusBar()->showMessage(message);
+}
+
+MainWindow::PreviewMode MainWindow::getPreviewMode() {
+    return previewMode;
+}
+
+int MainWindow::getFrameRate() {
+    return frameRate;
+}
+
+
+void MainWindow::on_loopButton_toggled(bool checked)
+{
+    if (checked) {
+        previewMode = MainWindow::LOOP;
+        statusBar()->showMessage("Set to looping preview.");
+    }
+}
+
+void MainWindow::on_pingPongButton_toggled(bool checked)
+{
+    if (checked) {
+        previewMode = MainWindow::PINGPONG;
+        statusBar()->showMessage("Set to pingpong preview.");
+    }
+}
