@@ -343,7 +343,7 @@ background-color: white;</string>
      <x>0</x>
      <y>0</y>
      <width>810</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -417,7 +417,9 @@ background-color: white;</string>
    <header location="global">canvas.h</header>
    <slots>
     <signal>mousePressEvent(QMouseEvent*)</signal>
+    <signal>mouseMoveEvent(QMouseEvent*)</signal>
     <slot>myMousePressEvent(QMouseEvent*)</slot>
+    <slot>myMouseMoveEvent(QMouseEvent*)</slot>
    </slots>
   </customwidget>
  </customwidgets>
@@ -454,6 +456,22 @@ background-color: white;</string>
     <hint type="destinationlabel">
      <x>372</x>
      <y>371</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>canvas</sender>
+   <signal>mouseMoveEvent(QMouseEvent*)</signal>
+   <receiver>canvas</receiver>
+   <slot>myMouseMoveEvent(QMouseEvent*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>415</x>
+     <y>262</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>424</x>
+     <y>306</y>
     </hint>
    </hints>
   </connection>

@@ -19,10 +19,13 @@ public:
 
 signals:
     void mousePressEvent(QMouseEvent * event);
+    void mouseMoveEvent(QMouseEvent * event);
 
 public slots:
     void myMousePressEvent(QMouseEvent * event);
+    void myMouseMoveEvent(QMouseEvent * event);
     void paintEvent(QPaintEvent *event);
+
 };
 
 #endif // CANVAS_H

@@ -3,41 +3,61 @@
 Canvas::Canvas(QWidget *parent) :
     QLabel(parent)
 {
-
     mainWindowRef = static_cast<MainWindow *>(parent->parent());
 }
 
-void Canvas::myMousePressEvent(QMouseEvent *event) {
+void Canvas::myMousePressEvent(QMouseEvent *event)
+{
+    // Gets the cursor's current position.
+    double xPos = event->pos().x();
+    double yPos = event->pos().y();
 
-    if (event->buttons() & Qt::LeftButton) {
+    // Calculates position for grid.
+    int xRel = (xPos / this->width()) * 16;
+    int yRel = (yPos / this->height()) * 16;
+
+    xRel = xRel * 16;
+    yRel = yRel * 16;
+
+    // Draws the points onto the canvas.
+    QPainter painter(mainWindowRef->getCurrentFrame());
+
+    painter.setPen(mainWindowRef->getCurrentColor());
+
+    QRect rect = QRect(xRel, yRel, 16, 16);
+    painter.drawRect(rect);
+    painter.fillRect(rect, mainWindowRef->getCurrentColor());
+
+    painter.end();
+    repaint();
+}
+
+void Canvas::myMouseMoveEvent(QMouseEvent *event)
+{
+    if (event->buttons() && Qt::LeftButton)
+    {
         // Gets the cursor's current position.
         double xPos = event->pos().x();
         double yPos = event->pos().y();
 
         // Calculates position for grid.
-        int xRel = (xPos / this->width()) * 32;
-        int yRel = (yPos / this->height()) * 32;
+        int xRel = (xPos / this->width()) * 16;
+        int yRel = (yPos / this->height()) * 16;
 
-        xRel = xRel * 32;
-        yRel = yRel * 32;
+        xRel = xRel * 16;
+        yRel = yRel * 16;
 
         // Draws the points onto the canvas.
         QPainter painter(mainWindowRef->getCurrentFrame());
 
-        //TODO make current color a variable modified by colorSelector slots
         painter.setPen(mainWindowRef->getCurrentColor());
 
-        qDebug() << "Pos: " << xPos << " " << yPos;
-        qDebug() << "Rel: " << xRel << " " << yRel;
-
-        QRect rect = QRect(xRel, yRel, 32, 32);
+        QRect rect = QRect(xRel, yRel, 16, 16);
         painter.drawRect(rect);
         painter.fillRect(rect, mainWindowRef->getCurrentColor());
 
         painter.end();
-
         repaint();
-        //this->setPixmap(*(mainWindowRef->getCurrentFrame()));
     }
 }
 
