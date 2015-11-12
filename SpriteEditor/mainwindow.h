@@ -15,6 +15,7 @@
 #include "fileio.h"
 #include <QtGui>
 #include <QFileDialog>
+#include <QMessageBox>
 
 namespace Ui {
 class MainWindow;
@@ -77,6 +78,8 @@ private slots:
     void on_actionSave_As_triggered();
 
     void on_actionOpen_triggered();
+
+    void on_actionExit_triggered();
 
 private:
     Ui::MainWindow *ui;

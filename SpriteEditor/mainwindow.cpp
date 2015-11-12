@@ -268,7 +268,7 @@ void MainWindow::on_actionSave_triggered()
 
 void MainWindow::on_actionSave_As_triggered()
 {
-    MainWindow::fileName = QFileDialog::getSaveFileName(this, "Save file", "", ".ssp");
+    MainWindow::fileName = QFileDialog::getSaveFileName(this, "Save file", "", "*.ssp");
     fileName.append(".ssp");
     std::vector<QImage> imagesToSave;
 
@@ -293,27 +293,78 @@ void MainWindow::on_actionSave_As_triggered()
 
 void MainWindow::on_actionOpen_triggered()
 {
+    // Create a dialog box to let them open an image
+    QString path = QFileDialog::getOpenFileName(this, "Open image", "", "*.ssp");
 
-    /*
-    Canvas* canvas = ui->canvas;
-    MainWindow::fileName = QFileDialog::getOpenFileName(this, "Open image", "", ".ssp");
+    // If they canceled the dialog, don't do anything
+    if (path == nullptr) return;
 
+    // Get the file path and load the file
+    MainWindow::fileName = path;
     std::vector<QImage> loadedImages = fileIO->load(fileName);
+    qDebug() << loadedImages.size();
+    qDebug("Loaded file");
 
+    // Clears the frame list
+    ui->listWidget->clear();
+
+    currentFrameNumber = 1;
+    frameCount = 1;
+
+    // Create the frames
     for (std::vector<QImage>::iterator it = loadedImages.begin(); it != loadedImages.end(); it++) {
-        frames[it] = loadedImages[it];
+        frames[frameCount] = &QPixmap::fromImage(*it);
+        QString s = "Frame ";
+        s.append(QString::number(frameCount));
+        QListWidgetItem* item = new QListWidgetItem(s, 0);
+        ui->listWidget->addItem(item);
+        frameCount++;
+        qDebug("Loop executed");
     }
 
+    currentFrame = frames[1];
 
-
-    QImage firstConvertedImage = canvas->convertToQImage();
-    imagesToSave.push_back(firstConvertedImage);
-    std::map<int, QPixmap*>::iterator it = frames.begin();
-    it++;
-
+    qDebug("Past loop");
 
     hasBeenSavedOnce = true;
     isCurrentlySaved = true;
     statusBar()->showMessage("File opened!");
-    */
+    qDebug("Past show message");
+
+    // Program currently crashes here.
+    QPainter p(currentFrame);
+    repaint();
+    qDebug("Past repaint");
+}
+
+void MainWindow::on_actionExit_triggered()
+{
+    if (MainWindow::isCurrentlySaved) {
+        QApplication::quit();
+    }
+    else {
+        QMessageBox msgBox;
+        msgBox.setText("The image has been changed since your last save.");
+        msgBox.setInformativeText("Save your changes before exiting?");
+        msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+        msgBox.setDefaultButton(QMessageBox::Save);
+        int ret = msgBox.exec();
+
+        switch (ret) {
+        case QMessageBox::Save:
+        {
+            MainWindow::on_actionSave_triggered();
+            break;
+        }
+        case QMessageBox::Discard:
+        {
+            QApplication::quit();
+            break;
+        }
+        case QMessageBox::Cancel:
+        {
+            break;
+        }
+    }
+    }
 }
