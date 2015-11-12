@@ -319,7 +319,7 @@ void MainWindow::on_actionOpen_triggered()
     if (path == nullptr) return;
 
     // Get the file path and load the file
-    MainWindow::fileName = path;
+    //MainWindow::fileName = path;
 
     /*
     std::vector<QImage*> loadedImages = fileIO->load(fileName);
@@ -329,10 +329,10 @@ void MainWindow::on_actionOpen_triggered()
     // Clears the frame list
     // ui->listWidget->clear();
 
-
+/*
     currentFrameNumber = 1;
     frameCount = 1;
-
+*/
 /*
     // Create the frames
     for (std::vector<QImage*>::iterator it = loadedImages.begin(); it != loadedImages.end(); it++) {
@@ -350,19 +350,19 @@ void MainWindow::on_actionOpen_triggered()
         qDebug("Loop executed");
     }
 */
-    currentFrame->fill();
+    //currentFrame->fill();
 
     qDebug("Past loop");
 
-    hasBeenSavedOnce = false;
-    isCurrentlySaved = false;
+    //hasBeenSavedOnce = false;
+    //isCurrentlySaved = false;
     statusBar()->showMessage("File opened!");
     qDebug("Past show message");
 
     // Program currently crashes here.
 
     // QPainter p(currentFrame);
-    ui->canvas->repaint();
+    //ui->canvas->repaint();
 
     qDebug("Past repaint");
 }
