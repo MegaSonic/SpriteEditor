@@ -309,6 +309,11 @@ Skin</string>
       <height>221</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
    </widget>
    <widget class="Canvas" name="canvas">
     <property name="geometry">
