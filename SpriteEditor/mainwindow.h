@@ -10,9 +10,11 @@
 #include <QColorDialog>
 #include <QPushButton>
 #include <QListWidgetItem>
+#include <QString>
 #include <map>
 #include "themes.h"
 #include "fileio.h"
+#include "spritepropertieswindow.h"
 #include <QtGui>
 #include <QFileDialog>
 #include <QMessageBox>
@@ -21,17 +23,26 @@ namespace Ui {
 class MainWindow;
 }
 
+class SpritePropertiesWindow;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
+    int spriteSize;
+    int scaleValue;
+
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 //    void mouseMoveEvent(QMouseEvent* event);
 
     QPixmap* getCurrentFrame();
     QColor getCurrentColor();
+    void setProjectName(QString name);
+    QString getProjectName();
+    void setCanvasSize(int size);
+    int getCanvasSize();
     std::map<int, QPixmap*>* getFrames();
 
     enum PreviewMode { LOOP = 0, PINGPONG = 1 };
@@ -86,10 +97,17 @@ private:
     QColor *currentColor;
 
     QImage* canvasImage;
-    QPainter* canvasPainter;
     QColorDialog* colorSelector;
     Themes* themes;
     FileIO* fileIO;
+    SpritePropertiesWindow* properties;
+
+    QString projectName;
+
+
+    //size of square canvas
+    int canvasSize;
+    int scaleTarget;
 
     std::map<int, QPixmap*> frames;
     int frameCount;
@@ -107,8 +125,6 @@ private:
     QString fileName;
 
 
-    //size of square canvas
-    unsigned int canvasSize;
     unsigned int currentFrameIndex;
     //holds each matrix of vectors holding pixel color data for each frame.
     // std::vector<QColor[][]> * frames;

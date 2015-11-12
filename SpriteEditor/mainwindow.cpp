@@ -9,14 +9,18 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    currentColor(new QColor()) {
+    currentColor(new QColor()),
+    properties(new SpritePropertiesWindow(this))
+{
+    scaleTarget = 600;
+    scaleValue = 16;
+    spriteSize =16;
+
     ui->setupUi(this);
 
-    //TODO This needs to be moved to an init func
-    canvasSize = 256;
+    canvasSize = spriteSize * scaleValue;
 
-    canvasPainter = new QPainter();
-
+    //properties->show();
     // Set up the color selector
     colorSelector = new QColorDialog(parent);
     colorSelector->setOption(QColorDialog::ShowAlphaChannel);
@@ -50,26 +54,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->listWidget, SIGNAL(itemClicked(QListWidgetItem *)), this, SLOT(on_listWidget_itemClicked(QListWidgetItem *item)));
 }
 
-/*
-void MainWindow::paintEvent(QPaintEvent *) {
-    //set painter to pixmap of current frame
-    QPainter * painter = new QPainter(paintedFrames[currentFrameIndex]);
-    QColor[][] * currentFrameMap = frames->at(currentFrameIndex);
-    //draw every pixel in the pixel
-    for(int i = 0; i < canvasSize; i++) {
-        for(int j = 0; j < canvasSize; j++) {
-            painter->setPen(currentFrameMap[i][j]);
-            painter->drawPoint(i, j);
-        }
-    }
-    delete painter;
-    ui->canvas = paintedFrames[currentFrameIndex];
-}
-*/
-
 MainWindow::~MainWindow() {
     delete ui;
-    delete canvasPainter;
     delete themes;
     delete fileIO;
 }
@@ -366,4 +352,29 @@ void MainWindow::on_actionExit_triggered()
         }
     }
     }
+}
+
+void MainWindow::setProjectName(QString name)
+{
+    projectName = name;
+}
+
+QString MainWindow::getProjectName()
+{
+    return projectName;
+}
+
+void MainWindow::setCanvasSize(int size)
+{
+    canvasSize = size;
+}
+
+int MainWindow::getCanvasSize()
+{
+    return canvasSize;
+}
+
+void MainWindow::on_actionSprite_Properties_triggered()
+{
+   properties->show();
 }

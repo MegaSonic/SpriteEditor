@@ -44,11 +44,11 @@ void Canvas::myMouseMoveEvent(QMouseEvent *event)
         double yPos = event->pos().y();
 
         // Calculates position for grid.
-        int xRel = (xPos / this->width()) * 16;
-        int yRel = (yPos / this->height()) * 16;
+        int xRel = (xPos / this->width()) * mainWindowRef->spriteSize;
+        int yRel = (yPos / this->height()) * mainWindowRef->spriteSize;
 
-        xRel = xRel * 16;
-        yRel = yRel * 16;
+        xRel = xRel * mainWindowRef->scaleValue;
+        yRel = yRel * mainWindowRef->scaleValue;
 
         // Draws the points onto the canvas.
         QPainter painter(mainWindowRef->getCurrentFrame());

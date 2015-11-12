@@ -18,16 +18,19 @@ SOURCES += main.cpp\
     themes.cpp \
     canvas.cpp \
     fileio.cpp \
-    preview.cpp
+    preview.cpp \
+    spritepropertieswindow.cpp
 
 HEADERS  += mainwindow.h \
     qcolormatrix.h \
     themes.h \
     canvas.h \
     fileio.h \
-    preview.h
+    preview.h \
+    spritepropertieswindow.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    spritepropertieswindow.ui
 
 DISTFILES +=
 
