@@ -55,8 +55,8 @@ void FileIO::save(std::vector<QImage> images, QString filePath) {
 /// \param filePath       The file path to load
 /// \return               A vector of QImage with their pixel data created
 ///
-std::vector<QImage> FileIO::load(QString filePath) {
-    std::vector<QImage> returnImages;
+std::vector<QImage*> FileIO::load(QString filePath) {
+    std::vector<QImage*> returnImages;
 
     QFile file(filePath);
 
@@ -64,7 +64,7 @@ std::vector<QImage> FileIO::load(QString filePath) {
     int height;
     int frames;
 
-    if (file.open(QIODevice::ReadWrite)) {
+    if (file.open(QIODevice::ReadOnly)) {
         QTextStream stream(&file);
         QString line;
 
@@ -83,14 +83,13 @@ std::vector<QImage> FileIO::load(QString filePath) {
         frames = line.toInt();
 
         // Now get the pixel information
-        line = "";
-        stream >> line;
 
         // Loop over every image frame
         for (int i = 0; i < frames; i++) {
 
             // First, construct the image
-            QImage image(width, height, QImage::Format_RGBA8888);
+            QImage* image = new QImage(width, height, QImage::Format_RGBA8888);
+            image->fill(Qt::white);
 
             // Loop over every pixel in the image
             for (int h = 0; h < height; h++) {
@@ -115,12 +114,15 @@ std::vector<QImage> FileIO::load(QString filePath) {
 
                     QColor color(red, green, blue, alpha);
 
-                    image.setPixel(w, h, color.rgba());
+                    image->setPixel(w, h, color.rgba());
+
                 }
 
             }
             // Add the image to the vector
             returnImages.push_back(image);
+            qDebug() << image->width() << " " << image->height();
+   //        delete image;
         }
         file.close();
     }

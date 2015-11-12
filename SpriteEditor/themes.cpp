@@ -58,13 +58,7 @@ void Themes::changeTheme(int themeColor) {
                     "background-color: qlineargradient(spread:pad, x1:0.478, y1:1, x2:0.494, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));"
                     "border-width: 1px;"
                     "border-color: #339;"
-                    "padding: 15px;"
-                    "padding-left: 10px;"
-                    "padding-right: 10px;"
-                    "min-width: 50px;"
-                    "max-width: 100px;"
-                    "min-height: 13px;"
-                    "max-height: 26px;"
+
                     "}"
 
                     "QPushButton:pressed {"
@@ -112,13 +106,7 @@ void Themes::changeTheme(int themeColor) {
                     "background-color: qlineargradient(spread:pad, x1:0.478, y1:1, x2:0.494, y2:0, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(185, 185, 185, 255));"
                     "border-width: 1px;"
                     "border-color: rgb(0, 0, 0);"
-                    "padding: 15px;"
-                    "padding-left: 10px;"
-                    "padding-right: 10px;"
-                    "min-width: 50px;"
-                    "max-width: 100px;"
-                    "min-height: 13px;"
-                    "max-height: 26px;"
+
                     "}"
 
                     "QPushButton:pressed {"
@@ -168,13 +156,7 @@ void Themes::changeTheme(int themeColor) {
                     "border-width: 1px;"
                     "border-color: #339;"
                     "border-style: solid;"
-                    "padding: 15px;"
-                    "padding-left: 10px;"
-                    "padding-right: 10px;"
-                    "min-width: 50px;"
-                    "max-width: 100px;"
-                    "min-height: 13px;"
-                    "max-height: 26px;"
+
                     "}"
 
                     "QPushButton:pressed {"

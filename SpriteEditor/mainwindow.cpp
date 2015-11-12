@@ -320,38 +320,50 @@ void MainWindow::on_actionOpen_triggered()
 
     // Get the file path and load the file
     MainWindow::fileName = path;
-    std::vector<QImage> loadedImages = fileIO->load(fileName);
+
+    /*
+    std::vector<QImage*> loadedImages = fileIO->load(fileName);
     qDebug() << loadedImages.size();
     qDebug("Loaded file");
-
+*/
     // Clears the frame list
-    ui->listWidget->clear();
+    // ui->listWidget->clear();
+
 
     currentFrameNumber = 1;
     frameCount = 1;
 
+/*
     // Create the frames
-    for (std::vector<QImage>::iterator it = loadedImages.begin(); it != loadedImages.end(); it++) {
-        frames[frameCount] = &QPixmap::fromImage(*it);
-        QString s = "Frame ";
-        s.append(QString::number(frameCount));
-        QListWidgetItem* item = new QListWidgetItem(s, 0);
+    for (std::vector<QImage*>::iterator it = loadedImages.begin(); it != loadedImages.end(); it++) {
+        QImage* image = *it;
+        QPixmap pixmap = QPixmap::fromImage(*image);
+
+        // Construct the new ListWidgetItem
+        frames[frameCount] = &pixmap;
+
+        QListWidgetItem* item = new QListWidgetItem(QString::number(frameCount), 0);
+
         ui->listWidget->addItem(item);
         frameCount++;
+
         qDebug("Loop executed");
     }
-
-    currentFrame = frames[1];
+*/
+    currentFrame->fill();
 
     qDebug("Past loop");
 
-    hasBeenSavedOnce = true;
-    isCurrentlySaved = true;
+    hasBeenSavedOnce = false;
+    isCurrentlySaved = false;
     statusBar()->showMessage("File opened!");
     qDebug("Past show message");
 
     // Program currently crashes here.
+
+    // QPainter p(currentFrame);
     ui->canvas->repaint();
+
     qDebug("Past repaint");
 }
 

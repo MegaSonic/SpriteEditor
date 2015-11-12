@@ -8,6 +8,7 @@
 #include <QIODevice>
 #include <QColor>
 #include <QRgb>
+#include <QDebug>
 
 
 class FileIO
@@ -17,7 +18,7 @@ public:
     FileIO();
 
     void save(std::vector<QImage> images, QString filePath);
-    std::vector<QImage> load(QString filePath);
+    std::vector<QImage*> load(QString filePath);
 
 };
 
