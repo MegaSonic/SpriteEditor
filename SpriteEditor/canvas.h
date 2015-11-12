@@ -17,6 +17,7 @@ class Canvas : public QLabel
 public:
     explicit Canvas(QWidget *parent = 0);
     QImage convertToQImage();
+    void callRepaint();
 
 signals:
     void mousePressEvent(QMouseEvent * event);

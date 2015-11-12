@@ -74,6 +74,10 @@ void Canvas::paintEvent(QPaintEvent *)
     painter.drawPixmap(0,0,this->width(),this->height(), *mainWindowRef->getCurrentFrame());
 }
 
+void Canvas::callRepaint() {
+    repaint();
+}
+
 QImage Canvas::convertToQImage()
 {
     return mainWindowRef->getCurrentFrame()->toImage();

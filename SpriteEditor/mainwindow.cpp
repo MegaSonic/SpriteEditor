@@ -332,8 +332,7 @@ void MainWindow::on_actionOpen_triggered()
     qDebug("Past show message");
 
     // Program currently crashes here.
-    QPainter p(currentFrame);
-    repaint();
+    ui->canvas->repaint();
     qDebug("Past repaint");
 }
 
