@@ -348,7 +348,7 @@ background-color: white;</string>
      <x>0</x>
      <y>0</y>
      <width>810</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -356,6 +356,7 @@ background-color: white;</string>
      <string>File</string>
     </property>
     <addaction name="actionNew"/>
+    <addaction name="actionOpen"/>
     <addaction name="actionSave"/>
     <addaction name="actionSave_As"/>
     <addaction name="actionExit"/>
@@ -411,6 +412,11 @@ background-color: white;</string>
   <action name="actionBlue">
    <property name="text">
     <string>Blue</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open...</string>
    </property>
   </action>
  </widget>

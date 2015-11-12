@@ -240,14 +240,24 @@ void MainWindow::on_actionSave_triggered()
         MainWindow::fileName = QFileDialog::getSaveFileName(this, "Save file", "", ".ssp");
         fileName.append(".ssp");
         std::vector<QImage> imagesToSave;
-        for (std::map<int, QPixmap*>::iterator it = frames.begin(); it != frames.end(); it++) {
+
+
+        Canvas* canvas = ui->canvas;
+        QImage firstConvertedImage = canvas->convertToQImage();
+        imagesToSave.push_back(firstConvertedImage);
+        std::map<int, QPixmap*>::iterator it = frames.begin();
+        it++;
+
+        for (it; it != frames.end(); it++) {
             QPixmap* image = frames[it->first];
             QImage convertedImage = image->toImage();
             imagesToSave.push_back(convertedImage);
         }
+
         fileIO->save(imagesToSave, fileName);
         hasBeenSavedOnce = true;
         isCurrentlySaved = true;
+        statusBar()->showMessage("File saved!");
     }
 }
 
@@ -256,12 +266,49 @@ void MainWindow::on_actionSave_As_triggered()
     MainWindow::fileName = QFileDialog::getSaveFileName(this, "Save file", "", ".ssp");
     fileName.append(".ssp");
     std::vector<QImage> imagesToSave;
-    for (std::map<int, QPixmap*>::iterator it = frames.begin(); it != frames.end(); it++) {
+
+
+    Canvas* canvas = ui->canvas;
+    QImage firstConvertedImage = canvas->convertToQImage();
+    imagesToSave.push_back(firstConvertedImage);
+    std::map<int, QPixmap*>::iterator it = frames.begin();
+    it++;
+
+    for (it; it != frames.end(); it++) {
         QPixmap* image = frames[it->first];
         QImage convertedImage = image->toImage();
         imagesToSave.push_back(convertedImage);
     }
+
     fileIO->save(imagesToSave, fileName);
     hasBeenSavedOnce = true;
     isCurrentlySaved = true;
+    statusBar()->showMessage("File saved!");
+}
+
+void MainWindow::on_actionOpen_triggered()
+{
+
+    /*
+    Canvas* canvas = ui->canvas;
+    MainWindow::fileName = QFileDialog::getOpenFileName(this, "Open image", "", ".ssp");
+
+    std::vector<QImage> loadedImages = fileIO->load(fileName);
+
+    for (std::vector<QImage>::iterator it = loadedImages.begin(); it != loadedImages.end(); it++) {
+        frames[it] = loadedImages[it];
+    }
+
+
+
+    QImage firstConvertedImage = canvas->convertToQImage();
+    imagesToSave.push_back(firstConvertedImage);
+    std::map<int, QPixmap*>::iterator it = frames.begin();
+    it++;
+
+
+    hasBeenSavedOnce = true;
+    isCurrentlySaved = true;
+    statusBar()->showMessage("File opened!");
+    */
 }
