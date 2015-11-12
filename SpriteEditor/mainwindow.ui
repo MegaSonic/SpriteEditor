@@ -6,21 +6,9 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>810</width>
-    <height>502</height>
+    <width>800</width>
+    <height>522</height>
    </rect>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>810</width>
-    <height>502</height>
-   </size>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>810</width>
-    <height>502</height>
-   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -32,74 +20,72 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
+      <x>10</x>
+      <y>10</y>
       <width>200</width>
-      <height>100</height>
+      <height>141</height>
      </rect>
     </property>
-    <property name="title">
-     <string>GroupBox</string>
+    <property name="styleSheet">
+     <string notr="true">border: 1px solid;</string>
     </property>
-    <widget class="QPushButton" name="eraseButton">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>0</y>
-       <width>72</width>
-       <height>45</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normaloff>:/qml/Editing-Eraser-icon.png</normaloff>:/qml/Editing-Eraser-icon.png</iconset>
-     </property>
-    </widget>
+    <property name="title">
+     <string/>
+    </property>
     <widget class="QPushButton" name="eyedropButton">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>50</y>
-       <width>72</width>
-       <height>45</height>
+       <x>110</x>
+       <y>90</y>
+       <width>81</width>
+       <height>41</height>
       </rect>
+     </property>
+     <property name="toolTip">
+      <string>Eyedropper</string>
      </property>
      <property name="text">
       <string/>
      </property>
      <property name="icon">
-      <iconset>
+      <iconset resource="resources.qrc">
        <normaloff>:/qml/Eyedropper-icon.png</normaloff>:/qml/Eyedropper-icon.png</iconset>
      </property>
     </widget>
     <widget class="QPushButton" name="marqueeButton">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>50</y>
-       <width>72</width>
-       <height>45</height>
+       <x>10</x>
+       <y>90</y>
+       <width>81</width>
+       <height>41</height>
       </rect>
+     </property>
+     <property name="toolTip">
+      <string>Selection</string>
      </property>
      <property name="text">
       <string/>
      </property>
      <property name="icon">
-      <iconset>
+      <iconset resource="resources.qrc">
        <normaloff>:/qml/cell-6-2-480.png</normaloff>:/qml/cell-6-2-480.png</iconset>
      </property>
     </widget>
     <widget class="QPushButton" name="drawButton">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>72</width>
+       <x>10</x>
+       <y>40</y>
+       <width>81</width>
        <height>45</height>
       </rect>
+     </property>
+     <property name="toolTip">
+      <string>Pencil</string>
      </property>
      <property name="styleSheet">
       <string notr="true"/>
@@ -108,150 +94,64 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset>
+      <iconset resource="resources.qrc">
        <normaloff>:/qml/1024px-Black_pencil.svg.png</normaloff>:/qml/1024px-Black_pencil.svg.png</iconset>
      </property>
     </widget>
-   </widget>
-   <widget class="QScrollArea" name="colorSelectorScroller">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>100</y>
-      <width>201</width>
-      <height>381</height>
-     </rect>
-    </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents_3">
+    <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>199</width>
-       <height>379</height>
+       <width>81</width>
+       <height>21</height>
       </rect>
      </property>
-     <widget class="QScrollArea" name="scrollArea">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>100</y>
-        <width>200</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>198</width>
-         <height>79</height>
-        </rect>
-       </property>
-      </widget>
-     </widget>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 0px;
+background-color: rgba(255, 255, 255, 0);</string>
+     </property>
+     <property name="text">
+      <string>Tools</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
     </widget>
-   </widget>
-   <widget class="QPushButton" name="onionSkinButton">
-    <property name="geometry">
-     <rect>
-      <x>745</x>
-      <y>440</y>
-      <width>61</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Onion
-Skin</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="deleteFrameButton">
-    <property name="geometry">
-     <rect>
-      <x>645</x>
-      <y>440</y>
-      <width>61</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Delete</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="copyFrameButton">
-    <property name="geometry">
-     <rect>
-      <x>695</x>
-      <y>440</y>
-      <width>61</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Copy</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="newFrameButton">
-    <property name="geometry">
-     <rect>
-      <x>595</x>
-      <y>440</y>
-      <width>61</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>New</string>
-    </property>
-   </widget>
-   <widget class="QListWidget" name="listWidget">
-    <property name="geometry">
-     <rect>
-      <x>605</x>
-      <y>221</y>
-      <width>191</width>
-      <height>221</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
+    <widget class="QPushButton" name="eraseButton">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>40</y>
+       <width>81</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Eraser</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/qml/Editing-Eraser-icon.png</normaloff>:/qml/Editing-Eraser-icon.png</iconset>
+     </property>
+    </widget>
    </widget>
    <widget class="Canvas" name="canvas">
     <property name="geometry">
      <rect>
-      <x>255</x>
-      <y>90</y>
+      <x>240</x>
+      <y>10</y>
       <width>300</width>
       <height>300</height>
      </rect>
@@ -263,7 +163,7 @@ Skin</string>
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">border: 1px;
+     <string notr="true">border: 1px solid black;
 background-color: white;</string>
     </property>
     <property name="text">
@@ -273,82 +173,445 @@ background-color: white;</string>
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QRadioButton" name="loopButton">
+   <widget class="QGroupBox" name="preview_box">
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>190</y>
-      <width>82</width>
-      <height>17</height>
+      <x>570</x>
+      <y>10</y>
+      <width>221</width>
+      <height>301</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Loop</string>
+    <property name="styleSheet">
+     <string notr="true">border: 1px solid;</string>
     </property>
-    <property name="checked">
-     <bool>true</bool>
+    <property name="title">
+     <string/>
     </property>
+    <widget class="QLabel" name="fps_label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>41</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 0px solid black;
+
+</string>
+     </property>
+     <property name="text">
+      <string>FPS: 12</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="pingPongButton">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>260</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>'Ping Ponged' Order</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="loopButton">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>220</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Looped Order</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>0</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 0px;
+background-color: rgba(255, 255, 255, 0);</string>
+     </property>
+     <property name="text">
+      <string>Preview</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+    </widget>
+    <widget class="Preview" name="preview_window">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>30</y>
+       <width>141</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 1px solid;
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QSlider" name="fpsSlider">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>70</y>
+       <width>22</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 0px;</string>
+     </property>
+     <property name="maximum">
+      <number>24</number>
+     </property>
+     <property name="value">
+      <number>12</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>190</y>
+       <width>131</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>true</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 0px;</string>
+     </property>
+     <property name="text">
+      <string>Animation</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+    </widget>
    </widget>
-   <widget class="QRadioButton" name="pingPongButton">
+   <widget class="QGroupBox" name="frames_box">
     <property name="geometry">
      <rect>
-      <x>710</x>
-      <y>190</y>
-      <width>82</width>
-      <height>17</height>
+      <x>240</x>
+      <y>320</y>
+      <width>551</width>
+      <height>161</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Ping Pong</string>
+    <property name="styleSheet">
+     <string notr="true">border: 1px solid;</string>
     </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QListWidget" name="listWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>431</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>64</width>
+       <height>64</height>
+      </size>
+     </property>
+     <property name="textElideMode">
+      <enum>Qt::ElideMiddle</enum>
+     </property>
+     <property name="movement">
+      <enum>QListView::Static</enum>
+     </property>
+     <property name="flow">
+      <enum>QListView::LeftToRight</enum>
+     </property>
+     <property name="resizeMode">
+      <enum>QListView::Fixed</enum>
+     </property>
+     <property name="layoutMode">
+      <enum>QListView::SinglePass</enum>
+     </property>
+     <property name="viewMode">
+      <enum>QListView::ListMode</enum>
+     </property>
+     <property name="modelColumn">
+      <number>0</number>
+     </property>
+     <property name="uniformItemSizes">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="copyFrameButton">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>60</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Copy</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="deleteFrameButton">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>90</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Delete</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="onionSkinButton">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>120</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Onion Skin</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="frames_label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>0</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 0px;
+background-color: rgba(255, 255, 255, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Frames</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="newFrameButton">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>30</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>New</string>
+     </property>
+     <property name="shortcut">
+      <string/>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <property name="autoDefault">
+      <bool>false</bool>
+     </property>
+     <property name="default">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
    </widget>
-   <widget class="QSpinBox" name="fpsCounter">
+   <widget class="QGroupBox" name="color_box">
     <property name="geometry">
      <rect>
-      <x>700</x>
+      <x>10</x>
       <y>160</y>
-      <width>42</width>
-      <height>22</height>
+      <width>201</width>
+      <height>321</height>
      </rect>
     </property>
-    <property name="maximum">
-     <number>60</number>
+    <property name="styleSheet">
+     <string notr="true">border: 1px solid;</string>
     </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 0px;
+background-color: rgba(255, 255, 255, 0);</string>
+     </property>
+     <property name="text">
+      <string>Colors</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+    </widget>
+    <widget class="QScrollArea" name="colorSelectorScroller">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>181</width>
+       <height>271</height>
+      </rect>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents_3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>179</width>
+        <height>269</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
    </widget>
-   <widget class="QLabel" name="fpsLabel">
-    <property name="geometry">
-     <rect>
-      <x>680</x>
-      <y>160</y>
-      <width>41</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>FPS</string>
-    </property>
-   </widget>
-   <widget class="Preview" name="preview">
-    <property name="geometry">
-     <rect>
-      <x>610</x>
-      <y>20</y>
-      <width>171</width>
-      <height>131</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
-    </property>
-   </widget>
+   <zorder>groupBox</zorder>
+   <zorder>canvas</zorder>
+   <zorder>preview_box</zorder>
+   <zorder>label</zorder>
+   <zorder>fps_label</zorder>
+   <zorder>frames_box</zorder>
+   <zorder>color_box</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>810</width>
-     <height>22</height>
+     <width>800</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -445,7 +708,9 @@ background-color: white;</string>
    <header location="global">preview.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>canvas</sender>
@@ -470,12 +735,12 @@ background-color: white;</string>
    <slot>myMousePressEvent(QMouseEvent*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>372</x>
-     <y>371</y>
+     <x>357</x>
+     <y>322</y>
     </hint>
     <hint type="destinationlabel">
-     <x>372</x>
-     <y>371</y>
+     <x>357</x>
+     <y>322</y>
     </hint>
    </hints>
   </connection>

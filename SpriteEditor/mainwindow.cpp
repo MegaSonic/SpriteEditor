@@ -11,10 +11,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     currentColor(new QColor()),
     properties(new SpritePropertiesWindow(this))
-{
+    {
     scaleTarget = 600;
     scaleValue = 16;
-    spriteSize =16;
+    spriteSize = 16;
 
     ui->setupUi(this);
 
@@ -27,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
     colorSelector->setOption(QColorDialog::NoButtons);
     colorSelector->setOption(QColorDialog::DontUseNativeDialog);
     ui->colorSelectorScroller->setWidget(colorSelector);
+
     colorSelector->setVisible(true);
     colorSelector->setWhatsThis("Scroll this area to select a color and transparency");
 
@@ -44,14 +45,20 @@ MainWindow::MainWindow(QWidget *parent) :
 
     frames[frameCount] = currentFrame;
     //frames.push_back(currentFrame);
-    QString s = "Frame ";
-    s.append(QString::number(frameCount));
-    QListWidgetItem* item = new QListWidgetItem(s, 0);
+    QListWidgetItem* item = new QListWidgetItem(QString::number(frameCount), 0);
     ui->listWidget->addItem(item);
     selectedItem = item;
+    QIcon currentIcon(currentFrame->copy(0, 0, canvasSize, canvasSize));
+    item->setIcon(currentIcon);
+    QFont f;
+    f.setPointSize(7);
+    item->setFont(f);
+    frameRate = 12;
+    previewMode = MainWindow::LOOP;
 
     //Connections
     connect(ui->listWidget, SIGNAL(itemClicked(QListWidgetItem *)), this, SLOT(on_listWidget_itemClicked(QListWidgetItem *item)));
+
 }
 
 MainWindow::~MainWindow() {
@@ -85,12 +92,8 @@ void MainWindow::on_actionBlue_triggered()
     themes->changeTheme(Themes::BLUE);
 }
 
-void MainWindow::on_newFrameButton_clicked()
+void MainWindow::on_newFrameButton_pressed()
 {
-    // Update Icon
-    QIcon currentIcon(currentFrame->copy(0, 0, canvasSize, canvasSize));
-    selectedItem->setIcon(currentIcon);
-
     // Make & keep track of new frame
         currentFrame = new QPixmap(canvasSize, canvasSize);
         QColor color(0,0,0,0);
@@ -100,19 +103,25 @@ void MainWindow::on_newFrameButton_clicked()
 
         //Add to list
         frames[frameCount] = currentFrame;
-        QString s = "Frame ";
-        s.append(QString::number(frameCount));
-        QListWidgetItem* item = new QListWidgetItem(s, 0);
+        QListWidgetItem* item = new QListWidgetItem(QString::number(frameCount), 0);
         ui->listWidget->addItem(item);
         selectedItem = item;
 
         // Update gui
         item->setSelected(true);
         QPainter p(currentFrame);
+
+        QIcon currentIcon(currentFrame->copy(0, 0, canvasSize, canvasSize));
+        item->setIcon(currentIcon);
+        QFont f;
+        f.setPointSize(10);
+        item->setFont(f);
+
         repaint();
+
 }
 
-void MainWindow::on_deleteFrameButton_clicked()
+void MainWindow::on_deleteFrameButton_pressed()
 {
     if (frames.size() > 1)
     {
@@ -126,11 +135,8 @@ void MainWindow::on_deleteFrameButton_clicked()
     }
 }
 
-void MainWindow::on_copyFrameButton_clicked()
+void MainWindow::on_copyFrameButton_pressed()
 {
-    // Update Icon
-    QIcon currentIcon(currentFrame->copy(0, 0, canvasSize, canvasSize));
-    selectedItem->setIcon(currentIcon);
 
     QPixmap* newFrame  = new QPixmap(*currentFrame);
       currentFrame = newFrame;
@@ -139,39 +145,49 @@ void MainWindow::on_copyFrameButton_clicked()
 
       //Add to list
       frames[frameCount] = currentFrame;
-      QString s = "Frame ";
-      s.append(QString::number(frameCount));
-      QListWidgetItem* item = new QListWidgetItem(s, 0);
+      QListWidgetItem* item = new QListWidgetItem(QString::number(frameCount), 0);
       ui->listWidget->addItem(item);
       selectedItem = item;
 
       // Update gui
       item->setSelected(true);
       QPainter p(currentFrame);
+
+      QIcon currentIcon(currentFrame->copy(0, 0, canvasSize, canvasSize));
+      item->setIcon(currentIcon);
+      QFont f;
+      f.setPointSize(10);
+      item->setFont(f);
+
+
+
       repaint();
 
 }
 
-void MainWindow::on_onionSkinButton_clicked()
+void MainWindow::on_onionSkinButton_pressed()
 {
 
 }
 
 // Gets the frame number from the listWidget tect.
 int MainWindow::getFrameNumber(QString s){
-    s.remove(0, 6);
     return s.toInt();
+}
+
+void MainWindow::repaintFrames() {
+    QIcon currentIcon(currentFrame->copy(0, 0, canvasSize, canvasSize));
+    selectedItem->setIcon(currentIcon);
 }
 
 void MainWindow::on_listWidget_itemClicked(QListWidgetItem *item)
 {
     //Update Icon
-    QIcon currentIcon(currentFrame->copy(0, 0, canvasSize, canvasSize));
-    selectedItem->setIcon(currentIcon);
+        QIcon currentIcon(currentFrame->copy(0, 0, canvasSize, canvasSize));
+        selectedItem->setIcon(currentIcon);
 
      selectedItem = item;
      currentFrameNumber = getFrameNumber(selectedItem->text());
-     qDebug() << selectedItem->text()<< endl;
      currentFrame = frames[currentFrameNumber];
      QPainter p(currentFrame);
      repaint();
@@ -181,8 +197,16 @@ QPixmap* MainWindow::getCurrentFrame() {
     return currentFrame;
 }
 
+int MainWindow::getFrameCount() {
+    return frameCount;
+}
+
 QColor MainWindow::getCurrentColor() {
     return colorSelector->currentColor();
+}
+
+void MainWindow::setCurrentColor(QColor color) {
+    colorSelector->setCurrentColor(color);
 }
 
 std::map<int, QPixmap*>* MainWindow::getFrames()
@@ -190,15 +214,16 @@ std::map<int, QPixmap*>* MainWindow::getFrames()
     return &frames;
 }
 
-void MainWindow::on_fpsCounter_valueChanged(int arg1)
+void MainWindow::on_fpsSlider_valueChanged(int val)
 {
-    frameRate = arg1;
+    frameRate = val;
     QString message;
-    message.append("Preview framerate changed to ");
-    message.append(QString::number(arg1));
-    message.append(".");
-    statusBar()->showMessage(message);
+    message.append("FPS: ");
+    message.append(QString::number(val));
+    ui->fps_label->setText(message);
 }
+
+
 
 MainWindow::PreviewMode MainWindow::getPreviewMode() {
     return previewMode;
@@ -213,7 +238,11 @@ void MainWindow::on_loopButton_toggled(bool checked)
 {
     if (checked) {
         previewMode = MainWindow::LOOP;
-        statusBar()->showMessage("Set to looping preview.");
+        QFont qf;
+        qf.setBold(true);
+        ui->loopButton->setFont(qf);
+        qf.setBold(false);
+        ui->pingPongButton->setFont(qf);
     }
 }
 
@@ -221,7 +250,11 @@ void MainWindow::on_pingPongButton_toggled(bool checked)
 {
     if (checked) {
         previewMode = MainWindow::PINGPONG;
-        statusBar()->showMessage("Set to pingpong preview.");
+        QFont qf;
+        qf.setBold(false);
+        ui->loopButton->setFont(qf);
+        qf.setBold(true);
+        ui->pingPongButton->setFont(qf);
     }
 }
 
@@ -377,4 +410,20 @@ int MainWindow::getCanvasSize()
 void MainWindow::on_actionSprite_Properties_triggered()
 {
    properties->show();
+}
+
+void MainWindow::on_drawButton_pressed() {
+    ui->canvas->currentTool = 0;
+}
+
+void MainWindow::on_eraseButton_pressed() {
+    ui->canvas->currentTool = 1;
+}
+
+void MainWindow::on_marqueeButton_pressed() {
+    ui->canvas->currentTool = 2;
+}
+
+void MainWindow::on_eyedropButton_pressed() {
+    ui->canvas->currentTool = 3;
 }

@@ -39,6 +39,7 @@ public:
 
     QPixmap* getCurrentFrame();
     QColor getCurrentColor();
+    void setCurrentColor(QColor color);
     void setProjectName(QString name);
     QString getProjectName();
     void setCanvasSize(int size);
@@ -52,6 +53,9 @@ public:
 
     PreviewMode getPreviewMode();
     int getFrameRate();
+    int getFrameCount();
+    void repaintFrames();
+
 
 private slots:
 
@@ -63,22 +67,17 @@ private slots:
 
     void on_actionBlue_triggered();
 
-    //void paintEvent(QPaintEvent *event);
+    void on_newFrameButton_pressed();
 
-    //void mousePressEvent(QMouseEvent *event);
+    void on_deleteFrameButton_pressed();
 
-    void on_newFrameButton_clicked();
+    void on_copyFrameButton_pressed();
 
-    void on_deleteFrameButton_clicked();
-
-    void on_copyFrameButton_clicked();
-
-    void on_onionSkinButton_clicked();
+    void on_onionSkinButton_pressed();
 
     void on_listWidget_itemClicked(QListWidgetItem *item);
 
-
-    void on_fpsCounter_valueChanged(int arg1);
+    void on_fpsSlider_valueChanged(int val);
 
     void on_loopButton_toggled(bool checked);
 
@@ -91,6 +90,16 @@ private slots:
     void on_actionOpen_triggered();
 
     void on_actionExit_triggered();
+
+    void on_actionSprite_Properties_triggered();
+
+    void on_drawButton_pressed();
+
+    void on_eraseButton_pressed();
+
+    void on_marqueeButton_pressed();
+
+    void on_eyedropButton_pressed();
 
 private:
     Ui::MainWindow *ui;

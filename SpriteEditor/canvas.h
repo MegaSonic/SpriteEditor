@@ -14,10 +14,12 @@ class Canvas : public QLabel
 
     MainWindow * mainWindowRef;
 
+
 public:
     explicit Canvas(QWidget *parent = 0);
     QImage convertToQImage();
     void callRepaint();
+    int currentTool = 0; //pencil, eraser, selector, eyedropper
 
 signals:
     void mousePressEvent(QMouseEvent * event);

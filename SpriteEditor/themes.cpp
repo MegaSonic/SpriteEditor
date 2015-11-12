@@ -11,9 +11,11 @@ Themes::Themes()
     }
 
     paletteList[Themes::DEFAULT]=mainWindow->palette();
+
 }
 
 void Themes::changeTheme(int themeColor) {
+
     switch (themeColor) {
     case Themes::DEFAULT:
         mainWindow->setPalette(paletteList[Themes::DEFAULT]);

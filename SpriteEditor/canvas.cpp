@@ -20,15 +20,23 @@ void Canvas::myMousePressEvent(QMouseEvent *event)
     yRel = yRel * 16;
 
     // Draws the points onto the canvas.
-    QPainter painter(mainWindowRef->getCurrentFrame());
+    QPixmap* cFrame = mainWindowRef->getCurrentFrame();
+    QPainter painter(cFrame);
+    if(currentTool == 0) {
+        painter.setPen(mainWindowRef->getCurrentColor());
 
-    painter.setPen(mainWindowRef->getCurrentColor());
-
-    QRect rect = QRect(xRel, yRel, 16, 16);
-    painter.drawRect(rect);
-    QColor colorFill = mainWindowRef->getCurrentColor();
-    colorFill.setAlpha(255);
-    painter.fillRect(rect, colorFill);
+        QRect rect = QRect(xRel, yRel, 16, 16);
+        painter.drawRect(rect);
+        painter.fillRect(rect, mainWindowRef->getCurrentColor());
+        QColor colorFill = mainWindowRef->getCurrentColor();
+        colorFill.setAlpha(255);
+        painter.fillRect(rect, colorFill);
+    } else if(currentTool == 1 ) {
+        QRect rect = QRect(xRel, yRel, 16, 16);
+        painter.eraseRect(rect);
+    } else if(currentTool = 4 ) {
+        mainWindowRef->setCurrentColor(QColor(cFrame->toImage().pixel(xRel, yRel)));
+    }
     mainWindowRef->isCurrentlySaved = false;
 
     painter.end();
@@ -52,15 +60,20 @@ void Canvas::myMouseMoveEvent(QMouseEvent *event)
 
         // Draws the points onto the canvas.
         QPainter painter(mainWindowRef->getCurrentFrame());
+        if(currentTool == 0) {
+            painter.setPen(mainWindowRef->getCurrentColor());
 
-        painter.setPen(mainWindowRef->getCurrentColor());
+            QRect rect = QRect(xRel, yRel, 16, 16);
+            painter.drawRect(rect);
+            painter.fillRect(rect, mainWindowRef->getCurrentColor());
+            QColor colorFill = mainWindowRef->getCurrentColor();
+            colorFill.setAlpha(255);
+            painter.fillRect(rect, colorFill);
+        } else if(currentTool == 1 ) {
+            QRect rect = QRect(xRel, yRel, 16, 16);
+            painter.eraseRect(rect);
+        }
 
-        QRect rect = QRect(xRel, yRel, 16, 16);
-        painter.drawRect(rect);
-        painter.fillRect(rect, mainWindowRef->getCurrentColor());
-        QColor colorFill = mainWindowRef->getCurrentColor();
-        colorFill.setAlpha(255);
-        painter.fillRect(rect, colorFill);
         mainWindowRef->isCurrentlySaved = false;
 
         painter.end();
