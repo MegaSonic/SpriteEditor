@@ -42,7 +42,9 @@ MainWindow::MainWindow(QWidget *parent) :
     //frames.push_back(currentFrame);
     QString s = "Frame ";
     s.append(QString::number(frameCount));
-    ui->listWidget->addItem(s);
+    QListWidgetItem* item = new QListWidgetItem(s, 0);
+    ui->listWidget->addItem(item);
+    selectedItem = item;
 
     //Connections
     connect(ui->listWidget, SIGNAL(itemClicked(QListWidgetItem *)), this, SLOT(on_listWidget_itemClicked(QListWidgetItem *item)));
@@ -99,6 +101,10 @@ void MainWindow::on_actionBlue_triggered()
 
 void MainWindow::on_newFrameButton_clicked()
 {
+    // Update Icon
+    QIcon currentIcon(currentFrame->copy(0, 0, canvasSize, canvasSize));
+    selectedItem->setIcon(currentIcon);
+
     // Make & keep track of new frame
         currentFrame = new QPixmap(canvasSize, canvasSize);
         QColor color(0,0,0,0);
@@ -112,6 +118,7 @@ void MainWindow::on_newFrameButton_clicked()
         s.append(QString::number(frameCount));
         QListWidgetItem* item = new QListWidgetItem(s, 0);
         ui->listWidget->addItem(item);
+        selectedItem = item;
 
         // Update gui
         item->setSelected(true);
@@ -135,6 +142,10 @@ void MainWindow::on_deleteFrameButton_clicked()
 
 void MainWindow::on_copyFrameButton_clicked()
 {
+    // Update Icon
+    QIcon currentIcon(currentFrame->copy(0, 0, canvasSize, canvasSize));
+    selectedItem->setIcon(currentIcon);
+
     QPixmap* newFrame  = new QPixmap(*currentFrame);
       currentFrame = newFrame;
       frameCount++;
@@ -146,6 +157,7 @@ void MainWindow::on_copyFrameButton_clicked()
       s.append(QString::number(frameCount));
       QListWidgetItem* item = new QListWidgetItem(s, 0);
       ui->listWidget->addItem(item);
+      selectedItem = item;
 
       // Update gui
       item->setSelected(true);
@@ -167,6 +179,10 @@ int MainWindow::getFrameNumber(QString s){
 
 void MainWindow::on_listWidget_itemClicked(QListWidgetItem *item)
 {
+    //Update Icon
+    QIcon currentIcon(currentFrame->copy(0, 0, canvasSize, canvasSize));
+    selectedItem->setIcon(currentIcon);
+
      selectedItem = item;
      currentFrameNumber = getFrameNumber(selectedItem->text());
      qDebug() << selectedItem->text()<< endl;
