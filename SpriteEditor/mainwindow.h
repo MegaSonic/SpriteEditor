@@ -30,8 +30,8 @@ public:
 //    void mouseMoveEvent(QMouseEvent* event);
 
     QPixmap* getCurrentFrame();
-
     QColor getCurrentColor();
+    std::map<int, QPixmap*>* getFrames();
 
     enum PreviewMode { LOOP = 0, PINGPONG = 1 };
 

@@ -17,13 +17,15 @@ SOURCES += main.cpp\
     qcolormatrix.cpp \
     themes.cpp \
     canvas.cpp \
-    fileio.cpp
+    fileio.cpp \
+    preview.cpp
 
 HEADERS  += mainwindow.h \
     qcolormatrix.h \
     themes.h \
     canvas.h \
-    fileio.h
+    fileio.h \
+    preview.h
 
 FORMS    += mainwindow.ui
 

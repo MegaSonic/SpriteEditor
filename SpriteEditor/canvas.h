@@ -25,7 +25,7 @@ signals:
 public slots:
     void myMousePressEvent(QMouseEvent * event);
     void myMouseMoveEvent(QMouseEvent * event);
-    void paintEvent(QPaintEvent *event);
+    void paintEvent(QPaintEvent * event);
 
 };
 

@@ -199,6 +199,11 @@ QColor MainWindow::getCurrentColor() {
     return colorSelector->currentColor();
 }
 
+std::map<int, QPixmap*>* MainWindow::getFrames()
+{
+    return &frames;
+}
+
 void MainWindow::on_fpsCounter_valueChanged(int arg1)
 {
     frameRate = arg1;
